@@ -1,0 +1,4 @@
+# Settings shared by every blog post
+# author: "Nicholas C. Taylor"
+freeze: true
+title-block-banner: true

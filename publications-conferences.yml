@@ -1,23 +1,35 @@
+# Link fields (pdf, slides, code, doi) are supported by the page template.
+# Uncomment and fill them in as they become available.
+
 - title: "Predicting in-lake turbidity using satellite data: Creating boat paths to compare cross-validation strategies"
   author: "Taylor, N. C., Macleod, M. S., Powers, S. M., and Hering, A. S."
   date: 2026-01
   type: "Publication"
   venue: "In preparation"
+  # pdf: files/papers/turbidity-cv.pdf
+  # code: https://github.com/n-c-taylor/REPO
+  # doi: https://doi.org/XXXX
 
 - title: "Simultaneous mean and sparse covariance monitoring via maximum likelihood estimation with positive-definite thresholding"
   author: "Weix, D., Taylor, N. C., Kim, R., Cath, T. Y., and Hering, A. S."
   date: 2026-01
   type: "Publication"
   venue: "Quality Engineering (in revision)"
+  # pdf: files/papers/mean-cov-monitoring.pdf
+  # code: https://github.com/n-c-taylor/REPO
+  # doi: https://doi.org/XXXX
 
 - title: "Predicting in-lake turbidity using satellite data: A comparison of spatial models"
   author: "Taylor, N. C., and Hering, A. S."
   date: 2026-06
   type: "Presentation"
   venue: "UCOWR/NIWR Annual Water Resources Conference, San Antonio, TX"
+  # slides: files/slides/ucowr-2026.pdf
 
 - title: "Bootstrap-based error rate estimators for the linear discriminant function"
   author: "Taylor, N. C., and Chen, P."
   date: 2021-04
   type: "Presentation"
-  venue: "Annual Meeting of the Texas Section of the MAA (virtual); Best Presentation in Applied Mathematics, Probability and Statistics"
+  venue: "Annual Meeting of the Texas Section of the MAA (virtual)"
+  award: "Best Presentation in Applied Mathematics, Probability and Statistics"
+  # slides: files/slides/maa-2021.pdf

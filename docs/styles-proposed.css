@@ -1,0 +1,85 @@
+/* ==========================================================
+   PROPOSED styles.css (not applied yet; awaiting approval)
+   Letters (A, B, C...) match the choices in the chat message.
+   ========================================================== */
+
+/* (A) Fonts: keep Lux's sans-serif headings, serif body text */
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap');
+
+/* (B) Neutral accent color, works in light and dark mode */
+:root {
+  --site-accent: #2c5d8a;
+  --site-muted: #6c757d;
+  --site-border: rgba(0, 0, 0, 0.12);
+}
+body.quarto-dark {
+  --site-accent: #8ab4dd;
+  --site-muted: #adb5bd;
+  --site-border: rgba(255, 255, 255, 0.15);
+}
+
+/* (A) + (D) Body text: serif, comfortable line height */
+main p,
+main li {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+/* (B) Links */
+main a { color: var(--site-accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+main a:hover { text-decoration-thickness: 2px; }
+
+/* (C) Lux uppercases every heading. Keep it for page titles and
+   section headings (h2), but use normal case for h3, so long
+   research-card and blog titles stay readable. */
+main h3 { text-transform: none; letter-spacing: 0; font-weight: 600; }
+
+/* (E) Section headings get a thin rule underneath */
+main h2 {
+  border-bottom: 1px solid var(--site-border);
+  padding-bottom: 0.3rem;
+  margin-top: 2.25rem;
+}
+
+/* ---------- Required: layout for classes already in your pages ---------- */
+
+/* Education / Teaching rows (index.qmd, teaching.qmd) */
+.cv-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin: 0.9rem 0 0.25rem;
+}
+.cv-entry p { margin: 0; }
+.cv-when { color: var(--site-muted); white-space: nowrap; font-size: 0.95rem; }
+.cv-detail { color: var(--site-muted); font-size: 0.95rem; }
+@media (max-width: 576px) {
+  .cv-entry { flex-direction: column; gap: 0; }
+}
+
+/* Research cards (research.qmd) */
+.research-card {
+  border: 1px solid var(--site-border);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+}
+.research-card h3 { margin-top: 0; }
+.research-image { width: 100%; border-radius: 6px; margin-bottom: 1rem; }
+
+/* Citation list (publications-conferences.qmd, _citation.ejs) */
+.citation-list li { margin-bottom: 1.25rem; }
+.citation-item { font-family: "Source Serif 4", Georgia, serif; line-height: 1.6; }
+.citation-title { font-weight: 600; }
+.citation-award .badge {
+  margin-top: 0.35rem;
+  background: transparent;
+  color: var(--site-accent);
+  border: 1px solid var(--site-accent);
+  font-weight: 500;
+  white-space: normal;
+  text-align: left;
+}
+.citation-links { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }

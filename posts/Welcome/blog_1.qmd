@@ -1,0 +1,12 @@
+---
+editor: source
+title: "Welcome to my blog"
+description: "What I plan to write about here."
+date: 2026-10-15
+categories: [news]
+draft: true   # delete this line when the post is ready to publish
+---
+
+Welcome! I will use this space to share updates on my current projects, write-ups from conferences and events, and short pieces on topics in spatial statistics, remote sensing, and water resources.
+
+<!-- Edit this starter post, then remove `draft: true` above to publish it. -->

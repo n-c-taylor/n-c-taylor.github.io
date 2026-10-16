@@ -1,17 +1,24 @@
 ---
 title: "Nicholas C. Taylor"
-subtitle: "PhD Candidate in Statistics, Baylor University"
+subtitle: "PhD Candidate in Statistics<br>*Baylor University*"
 image: images/profile.jpg
 about:
   template: trestles
   image-shape: round
+  image-width: 13em
   links:
     - icon: envelope
       text: Email
       href: mailto:nicholasclevelandtaylor@gmail.com
+    - icon: file-earmark-pdf
+      text: CV
+      href: files/cv.pdf
     # - icon: mortarboard
     #   text: Google Scholar
     #   href: https://scholar.google.com/citations?user=XXXX
+    # - icon: person-badge
+    #   text: ORCID
+    #   href: https://orcid.org/0000-0000-0000-0000
     - icon: github
       text: GitHub
       href: https://github.com/n-c-taylor
@@ -22,7 +29,7 @@ about:
 
 I am a fourth-year PhD candidate in the Department of Statistical Science at Baylor University, advised by [Dr. Amanda S. Hering](https://statistics.artsandsciences.baylor.edu/person/dr-amanda-s-hering). I am interested in spatial and spatiotemporal statistical modeling, predictive model validation, satellite remote sensing, and functional data analysis, with applications to water resources and the environmental and biological sciences. My work is motivated by applied problems, and I enjoy collaborative research that brings statistical methods to bear on real-world questions.
 
-I am currently a Research Assistant with the Baylor Water Security Collaborative, where I currently am working on characterizing public water data resources across Texas.
+I am a Research Assistant with the Baylor Water Security Collaborative, where I am working to characterize public water data resources across Texas.
 
 <!-- I am on the job market for 2026-27. -->
 
@@ -36,12 +43,46 @@ I am currently a Research Assistant with the Baylor Water Security Collaborative
 
 ## Education
 
-- PhD, Statistics, Baylor University (expected 2027)
-- MS, Statistics, Baylor University (2025)
-- MS, Mathematics, Texas Tech University (2023)
-- BS, Mathematics, *summa cum laude*, minor in Computer Science, University of Mary Hardin-Baylor (2021)
+:::: {.cv-entry}
+::: {.cv-what}
+**PhD, Statistics**, Baylor University
+:::
+::: {.cv-when}
+Expected 2027
+:::
+::::
+
+:::: {.cv-entry}
+::: {.cv-what}
+**MS, Statistics**, Baylor University
+:::
+::: {.cv-when}
+2025
+:::
+::::
+
+:::: {.cv-entry}
+::: {.cv-what}
+**MS, Mathematics**, Texas Tech University
+:::
+::: {.cv-when}
+2023
+:::
+::::
+
+:::: {.cv-entry}
+::: {.cv-what}
+**BS, Mathematics**, University of Mary Hardin-Baylor\
+[*Summa cum laude*, minor in Computer Science]{.cv-detail}
+:::
+::: {.cv-when}
+2021
+:::
+::::
 
 ## Teaching
 
-- Instructor of Record, STA 1380: Introduction to Statistics, Baylor University (2024-2025)
+- Instructor of Record, STA 1380: Introduction to Statistics, Baylor University (Fall 2024 to Fall 2025)
 - Department of Statistical Science Outstanding Teacher Award, 2024-2025
+
+See the [Teaching](teaching.qmd) page for my full teaching experience.

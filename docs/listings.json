@@ -2,5 +2,9 @@
   {
     "listing": "/publications-conferences.html",
     "items": []
+  },
+  {
+    "listing": "/blog.html",
+    "items": []
   }
 ]

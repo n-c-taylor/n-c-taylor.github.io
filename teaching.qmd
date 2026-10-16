@@ -1,0 +1,84 @@
+---
+editor: source
+title: "Teaching"
+---
+
+## Awards
+
+::: {.small-text}
+- Department of Statistical Science Outstanding Teacher Award, Baylor University, 2024-2025
+- Recognition for Excellence in Teaching, Baylor University, Spring 2025 and Fall 2025
+:::
+
+## Experience
+
+:::: {.cv-entry}
+::: {.cv-what}
+**Instructor of Record**\
+*Baylor University*
+:::
+::: {.cv-when}
+Aug 2024 - Dec 2025
+:::
+::::
+
+Fully responsible for introductory statistics courses, including developing lectures and assessments and holding regular office hours for approximately 30 students per term.
+
+- STA 1380: Introduction to Statistics (Fall 2024, Spring 2025, Fall 2025)
+
+:::: {.cv-entry}
+::: {.cv-what}
+**Supplemental Instructor and Teaching Assistant**\
+*Baylor University*
+:::
+::: {.cv-when}
+Jul 2023 - May 2024
+:::
+::::
+
+Held supplemental instruction lectures to help students in their introductory statistics coursework and assisted professors with grading.
+
+- STA 1380: Introduction to Statistics (Fall 2023, Spring 2024)
+
+:::: {.cv-entry}
+::: {.cv-what}
+**Instructor of Record**\
+*Texas Tech University*
+:::
+::: {.cv-when}
+Aug 2022 - May 2023
+:::
+::::
+
+Fully responsible for sections of business mathematics and linear algebra, including developing lectures and assessments and holding regular office hours for 60 to 130 students per term.
+
+- MATH 1330: Introductory Mathematical Analysis I (Fall 2022)
+- MATH 2360: Linear Algebra, two sections (Spring 2023)
+
+:::: {.cv-entry}
+::: {.cv-what}
+**Teaching Assistant and Tutor**\
+*Texas Tech University*
+:::
+::: {.cv-when}
+Aug 2021 - Aug 2022
+:::
+::::
+
+Graded homework and assessments for calculus and abstract algebra courses, and tutored students in statistics, algebra, and calculus.
+
+- MATH 2450: Calculus III with Applications (Fall 2021)
+- MATH 3360: Foundations of Algebra I (Spring 2022)
+- Department of Mathematics and Statistics Tutor (Summer 2022)
+
+<!-- :::: {.cv-entry} -->
+<!-- ::: {.cv-what} -->
+<!-- **Mathematics Tutor**\ -->
+<!-- *University of Mary Hardin-Baylor* -->
+<!-- ::: -->
+<!-- ::: {.cv-when} -->
+<!-- Jan 2019 - May 2021 -->
+<!-- ::: -->
+<!-- :::: -->
+
+<!-- Helped students understand topics in statistics, algebra, and calculus. -->

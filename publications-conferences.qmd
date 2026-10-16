@@ -1,12 +1,33 @@
 ---
+editor: source
 title: "Publications & Conferences"
 listing:
-  contents: publications-conferences.yml
-  type: table
-  sort: "date desc"
-  fields: [date, type, title, author, venue]
-  field-display-names:
-    type: "Type"
-    venue: "Journal/Conference"
-  date-format: "YYYY"
+  - id: publications
+    contents: publications-conferences.yml
+    template: _citation.ejs
+    include:
+      type: "Publication"
+    sort: "date desc"
+    sort-ui: false
+    filter-ui: false
+    date-format: "YYYY"
+  - id: presentations
+    contents: publications-conferences.yml
+    template: _citation.ejs
+    include:
+      type: "Presentation"
+    sort: "date desc"
+    sort-ui: false
+    filter-ui: false
+    date-format: "YYYY"
 ---
+
+## Publications
+
+::: {#publications}
+:::
+
+## Presentations
+
+::: {#presentations}
+:::

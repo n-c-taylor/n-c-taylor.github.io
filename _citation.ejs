@@ -1,0 +1,43 @@
+<%
+  // Citation-style listing for publications-conferences.yml.
+  // The HTML is built as one string and printed on a single line so Quarto
+  // does not reinterpret indentation or blank lines as Markdown.
+  // Note: in Quarto templates the equals-sign tag prints raw HTML and the
+  // dash tag escapes it, the reverse of standard EJS.
+  const escapeHtml = (s) => String(s ?? "")
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const myName = "Taylor, N. C.";
+  const linkTypes = [
+    ["pdf", "file-earmark-pdf", "PDF"],
+    ["slides", "easel", "Slides"],
+    ["code", "code-slash", "Code"],
+    ["doi", "link-45deg", "DOI"]
+  ];
+  let html = '<ul class="citation-list list-unstyled">';
+  for (const item of items) {
+    const authors = Array.isArray(item.author) ? item.author.join(", ") : (item.author ?? "");
+    const authorHtml = escapeHtml(authors).replace(myName, "<strong>" + myName + "</strong>");
+    const yearMatch = String(item.date ?? "").match(/\d{4}/);
+    const year = yearMatch ? yearMatch[0] : "n.d.";
+    html += '<li ' + metadataAttrs(item) + '><div class="citation-item">';
+    html += '<span class="citation-authors">' + authorHtml + '</span> (' + year + '). ';
+    html += '<span class="citation-title">' + escapeHtml(item.title) + '</span>. ';
+    if (item.venue) {
+      html += '<span class="citation-venue"><em>' + escapeHtml(item.venue) + '</em></span>.';
+    }
+    if (item.award) {
+      html += '<div class="citation-award"><span class="badge"><i class="bi bi-trophy"></i> ' + escapeHtml(item.award) + '</span></div>';
+    }
+    const present = linkTypes.filter(([key]) => item[key]);
+    if (present.length > 0) {
+      html += '<div class="citation-links">';
+      for (const [key, icon, label] of present) {
+        html += '<a class="btn btn-sm btn-outline-secondary" href="' + escapeHtml(item[key]) + '"><i class="bi bi-' + icon + '"></i> ' + label + '</a>';
+      }
+      html += '</div>';
+    }
+    html += '</div></li>';
+  }
+  html += '</ul>';
+%>
+<%= html %>

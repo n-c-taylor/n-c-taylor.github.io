@@ -1,0 +1,42 @@
+---
+title: "Research"
+editor: source
+---
+
+My research develops and applies spatial and spatiotemporal statistical methods, with a focus on how we build and fairly evaluate predictive models for environmental data. Below are the projects I am currently working on.
+
+::: research-card
+### Predicting in-lake turbidity from satellite data
+
+```{=html}
+<!-- Add a map or satellite figure here when ready:
+![](images/research/turbidity.png){.research-image fig-alt="Satellite-based turbidity predictions across a lake"}
+-->
+```
+
+This project uses satellite imagery to predict turbidity within a lake. One part compares spatial models for making these predictions. Another simulates boat sampling paths to compare cross-validation strategies for judging predictive accuracy.
+
+**Collaborators:** M. S. Macleod, S. M. Powers, A. S. Hering\
+**Outputs:** Presented at the UCOWR/NIWR Annual Water Resources Conference (2026); manuscript in preparation. See [Publications & Conferences](publications-conferences.qmd).
+:::
+
+::: research-card
+### Mapping public water data across Texas
+
+<!-- ![](images/research/water-data.png){.research-image fig-alt="Network of Texas water data organizations"} -->
+
+As part of the Baylor Water Security Collaborative, I am inventorying and characterizing public water data resources across Texas, documenting coverage, access methods, and citation practices to identify statewide data gaps. We are framing this inventory as a network, with the organizations that collect, aggregate, and use water data as nodes and the data flows between them as connections.
+
+**Collaborators:** A. S. Hering and the Baylor Water Security Collaborative
+:::
+
+::: research-card
+### Monitoring means and sparse covariances
+
+<!-- ![](images/research/monitoring.png){.research-image fig-alt="Process monitoring chart"} -->
+
+<!-- This work develops a method for simultaneously monitoring the mean and a sparse covariance structure of a multivariate process, using maximum likelihood estimation with positive-definite thresholding. -->
+
+**Collaborators:** D. Weix, R. Kim, T. Y. Cath, A. S. Hering\
+**Outputs:** In revision at *Quality Engineering*. See [Publications & Conferences](publications-conferences.qmd).
+:::

@@ -9,20 +9,33 @@ execute:
 
 website:
   title: "Nicholas C. Taylor"
+  description: "PhD candidate in Statistics at Baylor University working on spatial and spatiotemporal statistics, predictive model validation, and satellite remote sensing for water resources."
   site-url: "https://n-c-taylor.github.io"
+  image: images/profile.jpg
+  favicon: images/favicon.svg
+  open-graph: true
   navbar:
     right:
       - href: index.qmd
         text: About
+      - href: teaching.qmd
+        text: Teaching
+      # - href: research.qmd
+      #   text: Research
       - publications-conferences.qmd
+      - href: blog.qmd
+        text: Blog
       - text: CV
         href: files/cv.pdf
-      - icon: github
-        href: https://github.com/n-c-taylor
+      # - icon: github
+      #   href: https://github.com/n-c-taylor
+  page-footer:
+    left: "© 2026 Nicholas C. Taylor"
+    right: "Built with [Quarto](https://quarto.org)"
 
 format:
   html:
     theme:
-      light: cosmo
-      dark: darkly
+      light: lux
+      #dark: darkly
     css: styles.css
