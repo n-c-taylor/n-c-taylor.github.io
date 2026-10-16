@@ -1,0 +1,28 @@
+project:
+  type: website
+  output-dir: docs
+  resources:
+    - files/
+
+execute:
+  freeze: auto
+
+website:
+  title: "Nicholas C. Taylor"
+  site-url: "https://n-c-taylor.github.io"
+  navbar:
+    right:
+      - href: index.qmd
+        text: About
+      - publications-conferences.qmd
+      - text: CV
+        href: files/cv.pdf
+      - icon: github
+        href: https://github.com/n-c-taylor
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: darkly
+    css: styles.css

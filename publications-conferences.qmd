@@ -1,0 +1,12 @@
+---
+title: "Publications & Conferences"
+listing:
+  contents: publications-conferences.yml
+  type: table
+  sort: "date desc"
+  fields: [date, type, title, author, venue]
+  field-display-names:
+    type: "Type"
+    venue: "Journal/Conference"
+  date-format: "YYYY"
+---
