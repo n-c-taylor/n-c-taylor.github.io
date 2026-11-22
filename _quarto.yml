@@ -15,6 +15,8 @@ website:
   favicon: images/favicon.svg
   open-graph: true
   navbar:
+    logo: images/favicon.svg
+    logo-alt: "NCT logo"
     right:
       - href: index.qmd
         text: About
@@ -22,20 +24,34 @@ website:
         text: Teaching
       # - href: research.qmd
       #   text: Research
-      - publications-conferences.qmd
+      - href: publications-conferences.qmd
+        text: Publications
       - href: blog.qmd
         text: Blog
+      # The CV link is styled as the filled accent button (see styles.css)
       - text: CV
         href: files/cv.pdf
-      # - icon: github
-      #   href: https://github.com/n-c-taylor
+      - icon: github
+        href: https://github.com/n-c-taylor
+        aria-label: GitHub
   page-footer:
     left: "© 2026 Nicholas C. Taylor"
-    right: "Built with [Quarto](https://quarto.org)"
+    right:
+      - icon: envelope
+        href: mailto:nicholasclevelandtaylor@gmail.com
+        aria-label: Email
+      - icon: github
+        href: https://github.com/n-c-taylor
+        aria-label: GitHub
+      - icon: linkedin
+        href: https://www.linkedin.com/in/nicholas-c-taylor
+        aria-label: LinkedIn
 
 format:
   html:
+    # Dark is listed first, so it is the default; the navbar toggle switches to light.
     theme:
-      light: lux
-      #dark: darkly
+      dark: theme-dark.scss
+      light: theme-light.scss
     css: styles.css
+    respect-user-color-scheme: false

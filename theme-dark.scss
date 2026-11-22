@@ -1,0 +1,50 @@
+/*-- scss:defaults --*/
+// Dark theme (default). Shared component styles live in styles.css;
+// this file sets Bootstrap variables and the color tokens styles.css reads.
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Geist:wght@400;500;600&display=swap');
+
+$font-family-sans-serif: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+$headings-font-family: "Bricolage Grotesque", "Geist", system-ui, sans-serif;
+$headings-font-weight: 600;
+$font-size-root: 16px;
+$line-height-base: 1.65;
+
+$body-bg: #0b1220;
+$body-color: #e6edf6;
+$text-muted: rgba(230, 237, 246, 0.62);
+$primary: #22d3ee;
+$link-color: #22d3ee;
+$link-hover-color: #67e8f9;
+$border-color: rgba(255, 255, 255, 0.08);
+
+$navbar-bg: rgba(11, 18, 32, 0.75);
+$navbar-fg: rgba(230, 237, 246, 0.78);
+$navbar-hl: #ffffff;
+$footer-bg: #0b1220;
+$footer-fg: rgba(230, 237, 246, 0.55);
+
+$code-color: #67e8f9;
+$border-radius: 10px;
+
+/*-- scss:rules --*/
+:root {
+  --bg: #0b1220;
+  --bg-rgb: 11, 18, 32;
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-hover: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #e6edf6;
+  --heading: #ffffff;
+  --muted: rgba(230, 237, 246, 0.62);
+  --accent: #22d3ee;
+  --accent-rgb: 34, 211, 238;
+  --accent-fill: #22d3ee;
+  --accent-fill-text: #0b1220;
+  --accent-tint: rgba(34, 211, 238, 0.12);
+  --glow-1: rgba(14, 116, 144, 0.55);
+  --glow-2: rgba(34, 211, 238, 0.14);
+  --btn-secondary: rgba(255, 255, 255, 0.08);
+  --btn-secondary-hover: rgba(255, 255, 255, 0.14);
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+}

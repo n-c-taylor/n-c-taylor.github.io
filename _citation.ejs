@@ -1,9 +1,12 @@
 <%
-  // Citation-style listing for publications-conferences.yml.
+  // Card-style listing for publications-conferences.yml.
   // The HTML is built as one string and printed on a single line so Quarto
   // does not reinterpret indentation or blank lines as Markdown.
   // Note: in Quarto templates the equals-sign tag prints raw HTML and the
   // dash tag escapes it, the reverse of standard EJS.
+  //
+  // Optional fields per item: status (overrides the automatic status pill),
+  // award, pdf, slides, code, doi.
   const escapeHtml = (s) => String(s ?? "")
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const myName = "Taylor, N. C.";
@@ -13,30 +16,42 @@
     ["code", "code-slash", "Code"],
     ["doi", "link-45deg", "DOI"]
   ];
+  const knownStatuses = ["in preparation", "submitted", "under review", "in revision", "accepted", "in press"];
+  const statusFor = (item) => {
+    if (item.status) return String(item.status);
+    const venue = String(item.venue ?? "").toLowerCase();
+    const hit = knownStatuses.find((s) => venue.includes(s));
+    if (hit) return hit.charAt(0).toUpperCase() + hit.slice(1);
+    return item.type === "Presentation" ? "Talk" : "Published";
+  };
   let html = '<ul class="citation-list list-unstyled">';
   for (const item of items) {
     const authors = Array.isArray(item.author) ? item.author.join(", ") : (item.author ?? "");
     const authorHtml = escapeHtml(authors).replace(myName, "<strong>" + myName + "</strong>");
     const yearMatch = String(item.date ?? "").match(/\d{4}/);
     const year = yearMatch ? yearMatch[0] : "n.d.";
-    html += '<li ' + metadataAttrs(item) + '><div class="citation-item">';
-    html += '<span class="citation-authors">' + authorHtml + '</span> (' + year + '). ';
-    html += '<span class="citation-title">' + escapeHtml(item.title) + '</span>. ';
+    html += '<li ' + metadataAttrs(item) + '><article class="citation-card">';
+    html += '<div class="citation-meta">';
+    html += '<span class="pill">' + escapeHtml(statusFor(item)) + '</span>';
+    html += '<span class="pill pill-neutral">' + year + '</span>';
+    html += '</div>';
+    html += '<span class="citation-title">' + escapeHtml(item.title) + '</span>';
+    html += '<span class="citation-authors">' + authorHtml + '</span>';
     if (item.venue) {
-      html += '<span class="citation-venue"><em>' + escapeHtml(item.venue) + '</em></span>.';
+      html += '<span class="citation-venue">' + escapeHtml(item.venue) + '</span>';
     }
     if (item.award) {
-      html += '<div class="citation-award"><span class="badge"><i class="bi bi-trophy"></i> ' + escapeHtml(item.award) + '</span></div>';
+      html += '<div class="citation-award"><span class="pill"><i class="bi bi-trophy"></i> ' + escapeHtml(item.award) + '</span></div>';
     }
     const present = linkTypes.filter(([key]) => item[key]);
     if (present.length > 0) {
       html += '<div class="citation-links">';
       for (const [key, icon, label] of present) {
-        html += '<a class="btn btn-sm btn-outline-secondary" href="' + escapeHtml(item[key]) + '"><i class="bi bi-' + icon + '"></i> ' + label + '</a>';
+        html += '<a class="btn-ghost" href="' + escapeHtml(item[key]) + '"><i class="bi bi-' + icon + '"></i> ' + label + '</a>';
       }
       html += '</div>';
     }
-    html += '</div></li>';
+    html += '</article></li>';
   }
   html += '</ul>';
 %>

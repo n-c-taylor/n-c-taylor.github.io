@@ -1,0 +1,50 @@
+/*-- scss:defaults --*/
+// Light theme (via the navbar toggle). Shared component styles live in
+// styles.css; this file sets Bootstrap variables and color tokens.
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Geist:wght@400;500;600&display=swap');
+
+$font-family-sans-serif: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+$headings-font-family: "Bricolage Grotesque", "Geist", system-ui, sans-serif;
+$headings-font-weight: 600;
+$font-size-root: 16px;
+$line-height-base: 1.65;
+
+$body-bg: #f7fafc;
+$body-color: #0b1220;
+$text-muted: #526070;
+$primary: #0e7490;
+$link-color: #0e7490;
+$link-hover-color: #155e75;
+$border-color: rgba(11, 18, 32, 0.08);
+
+$navbar-bg: rgba(247, 250, 252, 0.8);
+$navbar-fg: #334155;
+$navbar-hl: #0b1220;
+$footer-bg: #f7fafc;
+$footer-fg: #526070;
+
+$code-color: #0e7490;
+$border-radius: 10px;
+
+/*-- scss:rules --*/
+:root {
+  --bg: #f7fafc;
+  --bg-rgb: 247, 250, 252;
+  --surface: #ffffff;
+  --surface-hover: #ffffff;
+  --border: rgba(11, 18, 32, 0.09);
+  --text: #0b1220;
+  --heading: #0b1220;
+  --muted: #526070;
+  --accent: #0e7490;
+  --accent-rgb: 14, 116, 144;
+  --accent-fill: #0e7490;
+  --accent-fill-text: #ffffff;
+  --accent-tint: rgba(14, 116, 144, 0.08);
+  --glow-1: rgba(165, 243, 252, 0.55);
+  --glow-2: rgba(14, 116, 144, 0.08);
+  --btn-secondary: rgba(11, 18, 32, 0.05);
+  --btn-secondary-hover: rgba(11, 18, 32, 0.09);
+  --shadow: 0 10px 30px rgba(11, 18, 32, 0.08);
+}

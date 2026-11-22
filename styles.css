@@ -1,57 +1,396 @@
+/* ==========================================================
+   Shared component styles (light and dark).
+   Colors come from CSS variables defined in theme-dark.scss
+   and theme-light.scss, so nothing here hard-codes a theme.
+   ========================================================== */
 
-/* (A) Fonts: keep Lux's sans-serif headings, serif body text */
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap');
-
-/* (B) Neutral accent color, works in light and dark mode */
-:root {
-  --site-accent: #2c5d8a;
-  --site-muted: #6c757d;
-  --site-border: rgba(0, 0, 0, 0.12);
-}
-body.quarto-dark {
-  --site-accent: #8ab4dd;
-  --site-muted: #adb5bd;
-  --site-border: rgba(255, 255, 255, 0.15);
+/* ---------- Base ---------- */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
 }
 
-/* (A) + (D) Body text: serif, comfortable line height */
-main p,
-main li {
-  font-family: "Source Serif 4", Georgia, serif;
-  font-size: 1.05rem;
-  line-height: 1.65;
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  color: var(--heading);
+  text-transform: none;
+  letter-spacing: -0.02em;
+  font-weight: 600;
 }
-
-/* Bold text: Lux sets body text to weight 200, so "bolder" only
-   reaches 400 and **bold** looks normal. Use a fixed weight instead. */
-main strong,
-main b { font-weight: 600; }
-
-/* (B) Links */
-main a { color: var(--site-accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
-main a:hover { text-decoration-thickness: 2px; }
-
-/* (C) Lux uppercases every heading. Keep it for page titles and
-   section headings (h2), but use normal case for h3, so long
-   research-card and blog titles stay readable. */
-main h3 { text-transform: none; letter-spacing: 0; font-weight: 600; }
-
-/* (E) Section headings get a thin rule underneath */
+h1, .title { letter-spacing: -0.035em; }
 main h2 {
-  border-bottom: 1px solid var(--site-border);
-  padding-bottom: 0.3rem;
-  margin-top: 2.25rem;
+  font-size: 1.85rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+main h3 { font-size: 1.25rem; }
+
+main p, main li { line-height: 1.7; }
+main strong, main b { font-weight: 600; color: var(--heading); }
+
+main a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(var(--accent-rgb), 0.35);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s ease;
+}
+main a:hover { text-decoration-color: var(--accent); }
+
+.text-muted, .muted { color: var(--muted) !important; }
+
+::selection { background: rgba(var(--accent-rgb), 0.3); }
+
+/* Page titles on inner pages */
+.quarto-title .title {
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 600;
+}
+.quarto-title .subtitle { color: var(--muted); font-size: 1.1rem; }
+#title-block-header.quarto-title-block { margin-bottom: 1.5rem; }
+
+/* ---------- Navbar (translucent, blurred) ---------- */
+.navbar {
+  background-color: rgba(var(--bg-rgb), 0.75) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+.navbar .navbar-title {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-size: 1.15rem;
+  color: var(--heading);
+}
+.navbar .navbar-brand img { max-height: 28px; border-radius: 7px; }
+.navbar .nav-link {
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  border-radius: 8px;
+}
+.navbar .nav-link.active { color: var(--heading) !important; }
+
+/* CV link becomes the filled call-to-action button */
+.navbar .nav-link[href$="cv.pdf"] {
+  background: var(--accent-fill);
+  color: var(--accent-fill-text) !important;
+  padding: 0.35rem 0.95rem !important;
+  margin: 0 0.25rem;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: filter 0.15s ease, transform 0.15s ease;
+}
+.navbar .nav-link[href$="cv.pdf"]:hover { filter: brightness(1.1); transform: translateY(-1px); }
+@media (max-width: 991.98px) {
+  .navbar .nav-link[href$="cv.pdf"] { display: inline-block; margin: 0.4rem 0; }
 }
 
-/* About page subtitle */
-div.quarto-about-trestles .subtitle {
-  font-size: 1.1rem;     /* Lux default is about 1.25rem */
-  line-height: 1.4;      /* space between lines when it wraps or uses <br> */
-  font-weight: 300;      /* 200 = light, 400 = normal, 600 = semibold */
-  margin-top: 0.5rem;    /* gap below your name */
+/* ---------- Footer ---------- */
+.nav-footer {
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.88rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+.nav-footer a { color: var(--muted); }
+.nav-footer a:hover { color: var(--accent); }
+.nav-footer .bi { font-size: 1.1rem; }
+
+/* ---------- Buttons ---------- */
+.btn-accent, .btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.15rem;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none !important;
+  transition: filter 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+.btn-accent {
+  background: var(--accent-fill);
+  color: var(--accent-fill-text) !important;
+  font-weight: 600;
+}
+.btn-accent:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.btn-ghost {
+  background: var(--btn-secondary);
+  color: var(--heading) !important;
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover { background: var(--btn-secondary-hover); transform: translateY(-1px); }
+
+/* ---------- Pills, chips, eyebrows ---------- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.22rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--accent);
+  background: var(--accent-tint);
+  border: 1px solid rgba(var(--accent-rgb), 0.35);
+  text-decoration: none !important;
+}
+.pill-neutral {
+  color: var(--muted);
+  background: var(--btn-secondary);
+  border-color: var(--border);
+}
+.pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0 1.25rem; }
+.pill-row p { display: contents; }
+
+.eyebrow {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: -0.6rem;
+}
+.section-head { margin-top: 3.5rem; }
+.section-head h2 { margin-top: 0.5rem !important; }
+.section-head p { margin: 0; }
+
+/* ---------- Cards ---------- */
+.card-surface,
+.feature-card,
+.role-card,
+.research-card,
+.citation-card,
+.teaser-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.feature-card:hover,
+.role-card:hover,
+.research-card:hover,
+.citation-card:hover,
+.teaser-card:hover {
+  border-color: rgba(var(--accent-rgb), 0.4);
+  box-shadow: 0 0 0 1px rgba(var(--accent-rgb), 0.08), var(--shadow);
+  background: var(--surface-hover);
 }
 
-/* ---------- Required: layout for classes already in your pages ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+@media (max-width: 991.98px) { .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 575.98px) { .card-grid { grid-template-columns: 1fr; } }
+
+.feature-card { padding: 1.25rem 1.25rem 1.1rem; }
+.feature-card p { margin: 0; }
+.feature-card .card-title {
+  display: block;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--heading);
+  letter-spacing: -0.01em;
+  margin-top: 0.85rem;
+  line-height: 1.3;
+}
+.feature-card .card-text {
+  display: block;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin-top: 0.35rem;
+}
+.icon-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 10px;
+  background: var(--accent-tint);
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
+  color: var(--accent);
+  font-size: 1.15rem;
+}
+
+/* ---------- Home: hero ---------- */
+/* The home page draws its own h1 in the hero, so hide Quarto's title block. */
+.home-page #title-block-header { display: none; }
+.home-wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: center;
+  padding: 4.5rem 0 3rem;
+  isolation: isolate;
+}
+.hero::before {
+  /* soft teal glow behind the hero */
+  content: "";
+  position: absolute;
+  inset: -6rem -40vw -2rem -40vw;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 45% 55% at 72% 40%, var(--glow-1), transparent 70%),
+    radial-gradient(ellipse 40% 50% at 18% 15%, var(--glow-2), transparent 70%);
+  pointer-events: none;
+}
+.hero h1, .hero .hero-title {
+  font-size: clamp(2.6rem, 6.5vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+  margin: 0.75rem 0 0.9rem;
+  border: none;
+}
+.hero .hero-tagline {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--heading);
+  margin-bottom: 1rem;
+}
+.hero .hero-tagline .accent { color: var(--accent); }
+.hero .hero-summary {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 36rem;
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1.5rem; }
+.hero-actions p { display: contents; }
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+}
+.hero-links p { display: contents; }
+.hero-links a { color: var(--muted) !important; text-decoration: none !important; }
+.hero-links a:hover { color: var(--accent) !important; }
+.hero-links .bi { margin-right: 0.35rem; }
+
+.hero-photo {
+  position: relative;
+  padding: 0.75rem;
+  border-radius: 22px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 0 60px rgba(var(--accent-rgb), 0.18), var(--shadow);
+  max-width: 380px;
+  justify-self: end;
+  width: 100%;
+}
+.hero-photo p { margin: 0; }
+.hero-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 14px;
+}
+@media (max-width: 767.98px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-top: 2.5rem;
+  }
+  .hero-photo { order: -1; justify-self: start; max-width: 200px; border-radius: 18px; padding: 0.5rem; }
+  .hero-photo img { border-radius: 12px; }
+}
+
+/* ---------- Home: stat strip ---------- */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 0.5rem 0 1rem;
+}
+.stat {
+  padding: 1.1rem 1rem;
+  text-align: center;
+  border-left: 1px solid var(--border);
+}
+.stat:first-child { border-left: none; }
+.stat p { margin: 0; }
+.stat-num {
+  display: block;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 1.9rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--heading);
+}
+.stat-label {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+@media (max-width: 767.98px) {
+  .stat-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat:nth-child(3) { border-left: none; }
+  .stat:nth-child(n+3) { border-top: 1px solid var(--border); }
+}
+
+/* ---------- Education timeline ---------- */
+.timeline {
+  position: relative;
+  margin: 1.25rem 0;
+  padding-left: 1.6rem;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.35rem;
+  top: 0.55rem;
+  bottom: 0.55rem;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent), rgba(var(--accent-rgb), 0.1));
+  border-radius: 2px;
+}
+.timeline .cv-entry { position: relative; margin: 0 0 1.1rem; }
+.timeline .cv-entry::before {
+  content: "";
+  position: absolute;
+  left: -1.6rem;
+  top: 0.5rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.12);
+}
 
 /* Education / Teaching rows (index.qmd, teaching.qmd) */
 .cv-entry {
@@ -62,47 +401,123 @@ div.quarto-about-trestles .subtitle {
   margin: 0.9rem 0 0.25rem;
 }
 .cv-entry p { margin: 0; }
-.cv-when { color: var(--site-muted); white-space: nowrap; font-size: 0.95rem; }
-.cv-detail { color: var(--site-muted); font-size: 0.95rem; }
-@media (max-width: 576px) {
+.cv-what em { color: var(--muted); font-style: normal; }
+.cv-when {
+  color: var(--muted);
+  white-space: nowrap;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+.cv-detail { color: var(--muted); font-size: 0.9rem; }
+@media (max-width: 575.98px) {
   .cv-entry { flex-direction: column; gap: 0; }
 }
 
-/* Research cards (research.qmd) */
-.research-card {
-  border: 1px solid var(--site-border);
-  border-radius: 8px;
+/* ---------- Home: teaching teaser ---------- */
+.teaser-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
   padding: 1.25rem 1.5rem;
-  margin: 1.5rem 0;
+  margin: 1.25rem 0 2rem;
 }
+.teaser-card p { margin: 0; }
+.teaser-card .teaser-text { flex: 1 1 22rem; }
+.teaser-card .teaser-text .pill { margin-bottom: 0.6rem; }
+
+/* ---------- Teaching: role cards ---------- */
+.role-card { padding: 1.25rem 1.5rem; margin: 1rem 0; }
+.role-card .cv-entry { margin-top: 0; }
+.role-card .cv-when {
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--btn-secondary);
+  font-size: 0.8rem;
+}
+.role-card > p { color: var(--muted); margin: 0.6rem 0 0.75rem; }
+.role-card ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.role-card ul li {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  color: var(--text);
+  background: var(--accent-tint);
+  border: 1px solid rgba(var(--accent-rgb), 0.2);
+}
+
+/* ---------- Research cards (research.qmd) ---------- */
+.research-card { padding: 1.5rem 1.6rem; margin: 1.25rem 0; }
 .research-card h3 { margin-top: 0; }
-.research-image { width: 100%; border-radius: 6px; margin-bottom: 1rem; }
+.research-card p:last-child { margin-bottom: 0; color: var(--muted); font-size: 0.95rem; }
+.research-image { width: 100%; border-radius: 10px; margin-bottom: 1rem; }
 
-/* Citation list (publications-conferences.qmd, _citation.ejs) */
-.citation-list li { margin-bottom: 1.25rem; }
-.citation-item { font-family: "Source Serif 4", Georgia, serif; line-height: 1.6; }
-.citation-title { font-weight: 600; }
-.citation-award .badge {
-  margin-top: 0.35rem;
-  background: transparent;
-  color: var(--site-accent);
-  border: 1px solid var(--site-accent);
-  font-weight: 500;
-  white-space: normal;
-  text-align: left;
+/* ---------- Publications (publications-conferences.qmd, _citation.ejs) ---------- */
+.citation-list { display: grid; gap: 1rem; margin: 1.25rem 0 0; padding: 0; }
+.quarto-listing:has(.citation-list) { margin-bottom: 0; padding-bottom: 0; }
+.quarto-listing:has(.citation-list) .listing-no-matching { display: none; }
+.citation-list > li { margin: 0; }
+.citation-card { padding: 1.25rem 1.5rem; }
+.citation-meta { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 0.7rem; }
+.citation-title {
+  display: block;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+  color: var(--heading);
 }
-.citation-links { margin-top: 0.4rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.citation-authors { display: block; color: var(--muted); font-size: 0.92rem; margin-top: 0.4rem; }
+.citation-authors strong { color: var(--heading); }
+.citation-venue { display: block; color: var(--muted); font-size: 0.92rem; font-style: italic; }
+.citation-award { margin-top: 0.75rem; }
+.citation-links { margin-top: 0.85rem; display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.citation-links .btn-ghost { padding: 0.35rem 0.75rem; font-size: 0.85rem; border-radius: 8px; }
 
-/* About page: narrow the photo column (Quarto default is 42%) so the
-   text on the right has more room. Only applies on wide screens; on
-   phones the photo still stacks above the text. */
-@media (min-width: 992px) {
-  div.quarto-about-trestles .about-entity { flex: 0 0 32%; }
-  div.quarto-about-trestles .about-contents { padding-left: 2em; }
+/* ---------- Blog ---------- */
+.quarto-listing .card,
+.quarto-grid-item.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+.quarto-grid-item.card:hover { border-color: rgba(var(--accent-rgb), 0.4); }
+.quarto-listing .listing-categories .listing-category,
+.quarto-title .quarto-categories .quarto-category {
+  border-radius: 999px;
+  color: var(--accent);
+  background: var(--accent-tint);
+  border: 1px solid rgba(var(--accent-rgb), 0.35);
+  text-transform: none;
+  font-size: 0.75rem;
 }
 
-/* Smaller text block, e.g. ::: {.small-text} */
+/* Post title banner: glow instead of a flat color block */
+.quarto-title-banner {
+  background:
+    radial-gradient(ellipse 60% 120% at 80% 0%, var(--glow-1), transparent 70%),
+    radial-gradient(ellipse 50% 100% at 10% 100%, var(--glow-2), transparent 70%),
+    var(--bg) !important;
+  color: var(--heading) !important;
+  border-bottom: 1px solid var(--border);
+}
+.quarto-title-banner .title { color: var(--heading); }
+.quarto-title-banner .description,
+.quarto-title-banner .subtitle { color: var(--muted); }
+
+/* ---------- Misc ---------- */
 main .small-text p,
-main .small-text li {
-  font-size: 0.85rem;
-}
+main .small-text li { font-size: 0.85rem; }
+
+hr { border-color: var(--border); opacity: 1; }
