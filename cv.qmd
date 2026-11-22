@@ -90,8 +90,12 @@ toc: false
   pdfjsLib.getDocument(PDF_URL).promise.then(function (doc) {
     pdfDoc = doc;
     renderAll();
+    // Re-render when the viewer's width changes, including the first time it
+    // gets a width (a page opened in a background tab starts at 0px wide).
     var t;
-    window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(renderAll, 200); });
+    var schedule = function () { clearTimeout(t); t = setTimeout(renderAll, 200); };
+    if (window.ResizeObserver) new ResizeObserver(schedule).observe(host);
+    else window.addEventListener("resize", schedule);
   }).catch(fail);
 })();
 </script>

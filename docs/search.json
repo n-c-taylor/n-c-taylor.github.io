@@ -32,7 +32,7 @@
     "href": "software.html",
     "title": "Software",
     "section": "",
-    "text": "R / C++v0.1.0Released Nov 2026\n\n\nfastkcv\n\n\nFast, exact cross-validation for global kriging in R. A companion to gstat: same inputs and outputs as krige.cv(), but a single Cholesky factorization replaces refitting for every fold.\n\n\npak::pkg_install(\"n-c-taylor/fastkcv\")Copy\n\n\n GitHub Vignette\n\n\n\n\nNo matching items"
+    "text": "R / C++v0.1.0Released Nov 2026\n\n\nfastkcv\n\n\nFast, exact cross-validation for global kriging in R. A companion to gstat: same inputs and outputs as krige.cv(), but a single Cholesky factorization replaces refitting for every fold.\n\n\npak::pkg_install(\"n-c-taylor/fastkcv\")Copy\n\n\n GitHub Documentation Vignette\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "teaching.html",

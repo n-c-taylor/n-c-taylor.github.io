@@ -26,6 +26,7 @@
     }
     html += '<div class="software-links">';
     if (item.repo) html += '<a class="btn-accent" href="' + esc(item.repo) + '"><i class="bi bi-github"></i> GitHub</a>';
+    if (item.site) html += '<a class="btn-ghost" href="' + esc(item.site) + '"><i class="bi bi-globe2"></i> Documentation</a>';
     if (item.docs) html += '<a class="btn-ghost" href="' + esc(item.docs) + '"><i class="bi bi-book"></i> ' + esc(item["docs-label"] || "Docs") + '</a>';
     html += '</div>';
     html += '</div></article>';

@@ -1,6 +1,7 @@
 # Software projects shown on software.qmd (rendered by _software.ejs).
 # Fields: id, name, tagline, logo, language, version, status, install,
-# repo, docs, docs-label, github (owner/repo).
+# repo, site (package website, e.g. pkgdown), docs, docs-label,
+# github (owner/repo).
 # If "github" is set and the repo is an R package, the version pill is read
 # live from the DESCRIPTION file on GitHub when the page loads ("version"
 # is only the fallback shown if GitHub can't be reached).
@@ -16,5 +17,6 @@
   date: 2026-11-21
   install: 'pak::pkg_install("n-c-taylor/fastkcv")'
   repo: https://github.com/n-c-taylor/fastkcv
-  docs: https://github.com/n-c-taylor/fastkcv/blob/main/vignettes/fastkcv.Rmd
+  site: https://n-c-taylor.github.io/fastkcv/
+  docs: https://n-c-taylor.github.io/fastkcv/articles/fastkcv.html
   docs-label: "Vignette"
