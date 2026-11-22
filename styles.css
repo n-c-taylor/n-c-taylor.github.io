@@ -233,6 +233,9 @@ main a:hover { text-decoration-color: var(--accent); }
 /* ---------- Home: hero ---------- */
 /* The home page draws its own h1 in the hero, so hide Quarto's title block. */
 .home-page #title-block-header { display: none; }
+/* The hero glow extends past the content edges; clip it so the page
+   never scrolls sideways. */
+#quarto-content { overflow-x: clip; }
 .home-wrap {
   max-width: 1120px;
   margin: 0 auto;
