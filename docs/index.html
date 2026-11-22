@@ -34,6 +34,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./images/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -73,7 +75,65 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-news .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-label','listing-kind','listing-text','listing-link',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
+      
+      searchColumns: ["listing-date","listing-label","listing-kind","listing-text","listing-link"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-news'] = new List('listing-news', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="Nicholas C. Taylor">
@@ -261,7 +321,7 @@ ul.task-list li input[type="checkbox"] {
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">About</span></a>
@@ -275,9 +335,15 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./software.html"> 
+<span class="menu-text">Software</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="./files/cv.pdf"> 
 <span class="menu-text">CV</span></a>
@@ -368,6 +434,30 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>I am a fourth-year PhD candidate in the Department of Statistical Science at Baylor University, advised by <a href="https://statistics.artsandsciences.baylor.edu/person/dr-amanda-s-hering">Dr.&nbsp;Amanda S. Hering</a>. I am interested in spatial and spatiotemporal statistical modeling, predictive model validation, satellite remote sensing, and functional data analysis, with applications to water resources and the environmental and biological sciences. My work is motivated by applied problems, and I enjoy collaborative research that brings statistical methods to bear on real-world questions.</p>
 <p>I am a Research Assistant with the Baylor Water Security Collaborative, where I am working to characterize public water data resources across Texas.</p>
+<!-- ============ News ============ -->
+<div class="section-head">
+<p><span class="eyebrow">Updates</span></p>
+<section id="recent-news" class="level2">
+<h2 class="anchored" data-anchor-id="recent-news">Recent news</h2>
+</section>
+</div>
+<div id="listing-news" class="quarto-listing quarto-listing-container-custom">
+<ul class="news-list list-unstyled">
+<li class="news-item">
+<span class="news-date">Nov 2026</span><span class="news-icon"><i class="bi bi-box-seam"></i></span><span class="news-text">Released fastkcv, an R package for fast, exact cross-validation for kriging. <a class="news-link" href="./software.html" aria-label="More about this">More <i class="bi bi-arrow-right-short"></i></a></span>
+</li>
+<li class="news-item">
+<span class="news-date">Jun 2026</span><span class="news-icon"><i class="bi bi-easel"></i></span><span class="news-text">Presented at the UCOWR/NIWR Annual Water Resources Conference in San Antonio, TX. <a class="news-link" href="./publications-conferences.html" aria-label="More about this">More <i class="bi bi-arrow-right-short"></i></a></span>
+</li>
+<li class="news-item">
+<span class="news-date">Fall 2025</span><span class="news-icon"><i class="bi bi-trophy"></i></span><span class="news-text">Received Recognition for Excellence in Teaching at Baylor University. <a class="news-link" href="./teaching.html" aria-label="More about this">More <i class="bi bi-arrow-right-short"></i></a></span>
+</li>
+<li class="news-item">
+<span class="news-date">Aug 2025</span><span class="news-icon"><i class="bi bi-trophy"></i></span><span class="news-text">Received the Department of Statistical Science Outstanding Teacher Award for 2024-25. <a class="news-link" href="./teaching.html" aria-label="More about this">More <i class="bi bi-arrow-right-short"></i></a></span>
+</li>
+</ul>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
 <!-- ============ Research interests ============ -->
 <div class="section-head">
 <p><span class="eyebrow">What I work on</span></p>
@@ -391,6 +481,21 @@ ul.task-list li input[type="checkbox"] {
 <div class="feature-card">
 <p><span class="icon-box"><i class="bi bi-droplet"></i></span> <span class="card-title">Water resources and the environmental sciences</span></p>
 </div>
+</div>
+<!-- ============ Featured software ============ -->
+<div class="section-head">
+<p><span class="eyebrow">Open source</span></p>
+<section id="featured-software" class="level2">
+<h2 class="anchored" data-anchor-id="featured-software">Featured software</h2>
+</section>
+</div>
+<div class="teaser-card software-teaser">
+<p><img src="images/software/fastkcv.png" class="teaser-logo img-fluid" alt="fastkcv hex logo"></p>
+<div class="teaser-text">
+<p><span class="pill"><i class="bi bi-code-slash"></i> R package</span></p>
+<p><strong>fastkcv</strong>: fast, exact cross-validation for global kriging, as a companion to gstat. <span class="teaser-stat">Up to 1,500× faster leave-one-out CV than gstat::krige.cv().</span></p>
+</div>
+<p><a href="./software.html" class="btn-ghost">View software <i class="bi bi-arrow-right"></i></a></p>
 </div>
 <!-- ============ Education ============ -->
 <div class="section-head">
@@ -456,7 +561,36 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+
 </main> <!-- /main -->
+<script>
+/* Copy-to-clipboard for any .copy-btn with a data-copy attribute
+   (install commands on Software, BibTeX on Publications). */
+document.addEventListener("click", function (e) {
+  var b = e.target.closest(".copy-btn");
+  if (!b) return;
+  var text = b.getAttribute("data-copy");
+  var label = b.querySelector("span");
+  var original = label ? label.textContent : "";
+  var done = function () {
+    if (label) label.textContent = "Copied";
+    b.classList.add("copied");
+    setTimeout(function () {
+      if (label) label.textContent = original;
+      b.classList.remove("copied");
+    }, 1600);
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(done, function () {});
+  } else {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (err) {}
+    document.body.removeChild(ta);
+  }
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

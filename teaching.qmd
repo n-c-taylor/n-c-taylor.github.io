@@ -1,17 +1,148 @@
 ---
 editor: source
 title: "Teaching"
+subtitle: "Introductory statistics and undergraduate mathematics at Baylor University and Texas Tech University"
 ---
 
-## Awards
+<!-- ============ Stats ============ -->
+::::: {.stat-strip}
+:::: {.stat}
+[5]{.stat-num} [Courses taught]{.stat-label}
+::::
+:::: {.stat}
+[2]{.stat-num} [Universities]{.stat-label}
+::::
+:::: {.stat}
+[4+]{.stat-num} [Years teaching]{.stat-label}
+::::
+:::: {.stat}
+[3]{.stat-num} [Teaching awards]{.stat-label}
+::::
+:::::
 
-::: {.pill-row}
-[<i class="bi bi-trophy"></i> Department of Statistical Science Outstanding Teacher Award, Baylor University, 2024-2025]{.pill}
-[<i class="bi bi-star"></i> Recognition for Excellence in Teaching, Baylor University, Spring 2025]{.pill}
-[<i class="bi bi-star"></i> Recognition for Excellence in Teaching, Baylor University, Fall 2025]{.pill}
+<!-- ============ Awards ============ -->
+::: {.section-head}
+[Recognition]{.eyebrow}
+
+## Awards
 :::
 
+::::: {.card-grid .award-grid}
+:::: {.award-card .award-feature}
+[<i class="bi bi-trophy"></i>]{.award-icon}
+[Outstanding Teacher Award]{.card-title}
+[Department of Statistical Science, Baylor University]{.card-text}
+[2024-2025]{.pill}
+::::
+:::: {.award-card}
+[<i class="bi bi-star"></i>]{.award-icon}
+[Recognition for Excellence in Teaching]{.card-title}
+[Baylor University]{.card-text}
+[Spring 2025]{.pill .pill-neutral}
+::::
+:::: {.award-card}
+[<i class="bi bi-star"></i>]{.award-icon}
+[Recognition for Excellence in Teaching]{.card-title}
+[Baylor University]{.card-text}
+[Fall 2025]{.pill .pill-neutral}
+::::
+:::::
+
+<!-- ============ Courses ============ -->
+::: {.section-head}
+[In the classroom]{.eyebrow}
+
+## Courses
+:::
+
+::::: {.card-grid .course-grid}
+:::: {.course-tile}
+[STA 1380]{.course-code}
+[Introduction to Statistics]{.course-title}
+[[Instructor]{.pill} [SI and TA]{.pill .pill-neutral}]{.course-roles}
+[Baylor University · Fall 2023 to Fall 2025, 5 terms]{.course-meta}
+::::
+:::: {.course-tile}
+[MATH 2360]{.course-code}
+[Linear Algebra]{.course-title}
+[[Instructor]{.pill}]{.course-roles}
+[Texas Tech University · Spring 2023, two sections]{.course-meta}
+::::
+:::: {.course-tile}
+[MATH 1330]{.course-code}
+[Introductory Mathematical Analysis I]{.course-title}
+[[Instructor]{.pill}]{.course-roles}
+[Texas Tech University · Fall 2022]{.course-meta}
+::::
+:::: {.course-tile}
+[MATH 3360]{.course-code}
+[Foundations of Algebra I]{.course-title}
+[[TA]{.pill .pill-neutral}]{.course-roles}
+[Texas Tech University · Spring 2022]{.course-meta}
+::::
+:::: {.course-tile}
+[MATH 2450]{.course-code}
+[Calculus III with Applications]{.course-title}
+[[TA]{.pill .pill-neutral}]{.course-roles}
+[Texas Tech University · Fall 2021]{.course-meta}
+::::
+:::::
+
+<!-- ============ How I teach (fill in, then remove the comment markers) ============
+::: {.section-head}
+[Approach]{.eyebrow}
+
+## How I teach
+:::
+
+::::: {.card-grid}
+:::: {.feature-card}
+[<i class="bi bi-people"></i>]{.icon-box}
+[FIRST PRINCIPLE TITLE]{.card-title}
+[One or two sentences about this principle.]{.card-text}
+::::
+:::: {.feature-card}
+[<i class="bi bi-bar-chart"></i>]{.icon-box}
+[SECOND PRINCIPLE TITLE]{.card-title}
+[One or two sentences about this principle.]{.card-text}
+::::
+:::: {.feature-card}
+[<i class="bi bi-universal-access"></i>]{.icon-box}
+[THIRD PRINCIPLE TITLE]{.card-title}
+[One or two sentences about this principle.]{.card-text}
+::::
+:::::
+============ end How I teach ============ -->
+
+<!-- ============ Student feedback (fill in, then remove the comment markers) ============
+::: {.section-head}
+[In their words]{.eyebrow}
+
+## Student feedback
+:::
+
+::::: {.card-grid .quote-grid}
+:::: {.quote-card}
+[QUOTE FROM A STUDENT EVALUATION.]{.quote-text}
+[STA 1380, Fall 2025]{.quote-source}
+::::
+:::: {.quote-card}
+[QUOTE FROM A STUDENT EVALUATION.]{.quote-text}
+[STA 1380, Spring 2025]{.quote-source}
+::::
+:::: {.quote-card}
+[QUOTE FROM A STUDENT EVALUATION.]{.quote-text}
+[MATH 2360, Spring 2023]{.quote-source}
+::::
+:::::
+============ end Student feedback ============ -->
+
+<!-- ============ Experience ============ -->
+::: {.section-head}
+[Roles]{.eyebrow}
+
 ## Experience
+:::
 
 ::::: {.role-card}
 :::: {.cv-entry}

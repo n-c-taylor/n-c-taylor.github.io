@@ -1,0 +1,27 @@
+# News items for the home page (rendered by _news.ejs, newest 5 shown).
+# Fields: date (for sorting), label (shown on the chip), kind
+# (release | talk | award | paper | news), text, optional link.
+
+- date: 2026-11-21
+  label: "Nov 2026"
+  kind: release
+  text: "Released fastkcv, an R package for fast, exact cross-validation for kriging."
+  link: software.qmd
+
+- date: 2026-06-01
+  label: "Jun 2026"
+  kind: talk
+  text: "Presented at the UCOWR/NIWR Annual Water Resources Conference in San Antonio, TX."
+  link: publications-conferences.qmd
+
+- date: 2025-12-01
+  label: "Fall 2025"
+  kind: award
+  text: "Received Recognition for Excellence in Teaching at Baylor University."
+  link: teaching.qmd
+
+- date: 2025-08-01
+  label: "Aug 2025"
+  kind: award
+  text: "Received the Department of Statistical Science Outstanding Teacher Award for 2024-25."
+  link: teaching.qmd

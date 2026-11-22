@@ -1,11 +1,18 @@
-# Link fields (pdf, slides, code, doi) are supported by the page template.
-# Uncomment and fill them in as they become available.
+# Fields used by _citation.ejs:
+#   title, author, date, type ("Publication" or "Presentation"), venue
+#   award    optional, shows a trophy pill (and counts under the Awards filter)
+#   status   optional, overrides the automatic status pill
+#   thumb    optional image path (e.g. images/pubs/turbidity.png); icon tile if absent
+#   project  optional link to the related project, e.g. research.qmd#turbidity
+#   pdf, slides, code, doi   optional link buttons
+# Uncomment and fill in link fields as they become available.
 
 - title: "Predicting in-lake turbidity using satellite data: Creating boat paths to compare cross-validation strategies"
   author: "Taylor, N. C., Macleod, M. S., Powers, S. M., and Hering, A. S."
   date: 2026-01
   type: "Publication"
   venue: "In preparation"
+  project: research.qmd#turbidity
   # pdf: files/papers/turbidity-cv.pdf
   # code: https://github.com/n-c-taylor/REPO
   # doi: https://doi.org/XXXX
@@ -15,6 +22,7 @@
   date: 2026-01
   type: "Publication"
   venue: "Quality Engineering (in revision)"
+  project: research.qmd#monitoring
   # pdf: files/papers/mean-cov-monitoring.pdf
   # code: https://github.com/n-c-taylor/REPO
   # doi: https://doi.org/XXXX
@@ -24,6 +32,7 @@
   date: 2026-06
   type: "Presentation"
   venue: "UCOWR/NIWR Annual Water Resources Conference, San Antonio, TX"
+  project: research.qmd#turbidity
   # slides: files/slides/ucowr-2026.pdf
 
 - title: "Bootstrap-based error rate estimators for the linear discriminant function"

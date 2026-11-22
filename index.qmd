@@ -4,6 +4,14 @@ body-classes: home-page
 image: images/profile.jpg
 page-layout: full
 toc: false
+listing:
+  id: news
+  contents: news.yml
+  template: _news.ejs
+  sort: "date desc"
+  max-items: 5
+  sort-ui: false
+  filter-ui: false
 ---
 
 ::::::: {.home-wrap}
@@ -72,6 +80,16 @@ I am a fourth-year PhD candidate in the Department of Statistical Science at Bay
 
 I am a Research Assistant with the Baylor Water Security Collaborative, where I am working to characterize public water data resources across Texas.
 
+<!-- ============ News ============ -->
+::: {.section-head}
+[Updates]{.eyebrow}
+
+## Recent news
+:::
+
+::: {#news}
+:::
+
 <!-- ============ Research interests ============ -->
 ::: {.section-head}
 [What I work on]{.eyebrow}
@@ -101,6 +119,24 @@ I am a Research Assistant with the Baylor Water Security Collaborative, where I 
 [Water resources and the environmental sciences]{.card-title}
 ::::
 :::::
+
+<!-- ============ Featured software ============ -->
+::: {.section-head}
+[Open source]{.eyebrow}
+
+## Featured software
+:::
+
+:::: {.teaser-card .software-teaser}
+![](images/software/fastkcv.png){.teaser-logo fig-alt="fastkcv hex logo"}
+
+::: {.teaser-text}
+[<i class="bi bi-code-slash"></i> R package]{.pill}
+
+**fastkcv**: fast, exact cross-validation for global kriging, as a companion to gstat. [Up to 1,500× faster leave-one-out CV than gstat::krige.cv().]{.teaser-stat}
+:::
+[View software <i class="bi bi-arrow-right"></i>](software.qmd){.btn-ghost}
+::::
 
 <!-- ============ Education ============ -->
 ::: {.section-head}

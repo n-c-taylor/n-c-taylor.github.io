@@ -262,7 +262,7 @@ ul.task-list li input[type="checkbox"] {
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
 <span class="menu-text">About</span></a>
@@ -276,9 +276,15 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./software.html"> 
+<span class="menu-text">Software</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="./files/cv.pdf"> 
 <span class="menu-text">CV</span></a>
@@ -325,7 +331,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>My research develops and applies spatial and spatiotemporal statistical methods, with a focus on how we build and fairly evaluate predictive models for environmental data. Below are the projects I am currently working on.</p>
-<section id="predicting-in-lake-turbidity-from-satellite-data" class="level3 research-card">
+<div id="turbidity" class="research-card">
+<section id="predicting-in-lake-turbidity-from-satellite-data" class="level3">
 <h3 class="anchored" data-anchor-id="predicting-in-lake-turbidity-from-satellite-data">Predicting in-lake turbidity from satellite data</h3>
 <!-- Add a map or satellite figure here when ready:
 ![](images/research/turbidity.png){.research-image fig-alt="Satellite-based turbidity predictions across a lake"}
@@ -334,23 +341,56 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Collaborators:</strong> M. S. Macleod, S. M. Powers, A. S. Hering<br>
 <strong>Outputs:</strong> Presented at the UCOWR/NIWR Annual Water Resources Conference (2026); manuscript in preparation. See <a href="./publications-conferences.html">Publications &amp; Conferences</a>.</p>
 </section>
-<section id="mapping-public-water-data-across-texas" class="level3 research-card">
+</div>
+<div id="water-data" class="research-card">
+<section id="mapping-public-water-data-across-texas" class="level3">
 <h3 class="anchored" data-anchor-id="mapping-public-water-data-across-texas">Mapping public water data across Texas</h3>
 <!-- ![](images/research/water-data.png){.research-image fig-alt="Network of Texas water data organizations"} -->
 <p>As part of the Baylor Water Security Collaborative, I am inventorying and characterizing public water data resources across Texas, documenting coverage, access methods, and citation practices to identify statewide data gaps. We are framing this inventory as a network, with the organizations that collect, aggregate, and use water data as nodes and the data flows between them as connections.</p>
 <p><strong>Collaborators:</strong> A. S. Hering and the Baylor Water Security Collaborative</p>
 </section>
-<section id="monitoring-means-and-sparse-covariances" class="level3 research-card">
+</div>
+<div id="monitoring" class="research-card">
+<section id="monitoring-means-and-sparse-covariances" class="level3">
 <h3 class="anchored" data-anchor-id="monitoring-means-and-sparse-covariances">Monitoring means and sparse covariances</h3>
 <!-- ![](images/research/monitoring.png){.research-image fig-alt="Process monitoring chart"} -->
 <!-- This work develops a method for simultaneously monitoring the mean and a sparse covariance structure of a multivariate process, using maximum likelihood estimation with positive-definite thresholding. -->
 <p><strong>Collaborators:</strong> D. Weix, R. Kim, T. Y. Cath, A. S. Hering<br>
 <strong>Outputs:</strong> In revision at <em>Quality Engineering</em>. See <a href="./publications-conferences.html">Publications &amp; Conferences</a>.</p>
 </section>
+</div>
 
 
 
 </main> <!-- /main -->
+<script>
+/* Copy-to-clipboard for any .copy-btn with a data-copy attribute
+   (install commands on Software, BibTeX on Publications). */
+document.addEventListener("click", function (e) {
+  var b = e.target.closest(".copy-btn");
+  if (!b) return;
+  var text = b.getAttribute("data-copy");
+  var label = b.querySelector("span");
+  var original = label ? label.textContent : "";
+  var done = function () {
+    if (label) label.textContent = "Copied";
+    b.classList.add("copied");
+    setTimeout(function () {
+      if (label) label.textContent = original;
+      b.classList.remove("copied");
+    }, 1600);
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(done, function () {});
+  } else {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (err) {}
+    document.body.removeChild(ta);
+  }
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

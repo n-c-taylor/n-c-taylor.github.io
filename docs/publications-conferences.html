@@ -85,41 +85,13 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-type','listing-venue',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
+      valueNames: ['listing-title','listing-author','listing-date','listing-type','listing-venue','listing-project','listing-award',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-date","listing-type","listing-venue"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-type","listing-venue","listing-project","listing-award"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
     window['quarto-listings']['listing-publications'] = new List('listing-publications', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-presentations .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-type','listing-venue','listing-award',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-type","listing-venue","listing-award"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-presentations'] = new List('listing-presentations', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -165,6 +137,7 @@ window.Quarto = {
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="Publications &amp; Conferences – Nicholas C. Taylor">
+<meta property="og:description" content="Papers and talks on spatial statistics, model validation, and water resources">
 <meta property="og:image" content="https://n-c-taylor.github.io/images/profile.jpg">
 <meta property="og:site_name" content="Nicholas C. Taylor">
 </head>
@@ -349,7 +322,7 @@ window.Quarto = {
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
 <span class="menu-text">About</span></a>
@@ -363,9 +336,15 @@ window.Quarto = {
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./software.html"> 
+<span class="menu-text">Software</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="./files/cv.pdf"> 
 <span class="menu-text">CV</span></a>
@@ -395,6 +374,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Publications &amp; Conferences</h1>
+<p class="subtitle lead">Papers and talks on spatial statistics, model validation, and water resources</p>
 </div>
 
 
@@ -411,44 +391,95 @@ window.Quarto = {
 </header>
 
 
-<section id="publications" class="level2">
-<h2 class="anchored" data-anchor-id="publications">Publications</h2>
+<div class="pill-row page-links">
+<p><a href="https://github.com/n-c-taylor" class="btn-ghost"><i class="bi bi-github"></i> GitHub</a> <a href="files/cv.pdf" class="btn-ghost"><i class="bi bi-file-earmark-pdf"></i> Full CV</a> <!-- [<i class="bi bi-mortarboard"></i> Google Scholar](https://scholar.google.com/citations?user=XXXX){.btn-ghost} --> <!-- [<i class="bi bi-person-badge"></i> ORCID](https://orcid.org/0000-0000-0000-0000){.btn-ghost} --></p>
+</div>
 <div id="listing-publications" class="quarto-listing quarto-listing-container-custom">
+<div class="pub-filters" role="group" aria-label="Filter publications">
+<button type="button" class="pub-filter active" data-filter="all" aria-pressed="true">
+All <span class="pub-count">4</span>
+</button>
+<button type="button" class="pub-filter" data-filter="paper" aria-pressed="false">
+Papers <span class="pub-count">2</span>
+</button>
+<button type="button" class="pub-filter" data-filter="talk" aria-pressed="false">
+Talks <span class="pub-count">2</span>
+</button>
+<button type="button" class="pub-filter" data-filter="award" aria-pressed="false">
+Awards <span class="pub-count">1</span>
+</button>
+</div>
 <ul class="citation-list list-unstyled">
-<li data-index="0" data-listing-date-sort="1767247200000">
+<li data-index="0" data-listing-date-sort="1780290000000" data-kind="talk" data-award="no">
 <article class="citation-card">
-<div class="citation-meta">
-<span class="pill">In preparation</span><span class="pill pill-neutral">2026</span>
+<div class="citation-thumb">
+<i class="bi bi-easel"></i>
 </div>
-<span class="citation-title">Predicting in-lake turbidity using satellite data: Creating boat paths to compare cross-validation strategies</span><span class="citation-authors"><strong>Taylor, N. C.</strong>, Macleod, M. S., Powers, S. M., and Hering, A. S.</span><span class="citation-venue">In preparation</span>
-</article>
-</li>
-<li data-index="1" data-listing-date-sort="1767247200000">
-<article class="citation-card">
-<div class="citation-meta">
-<span class="pill">In revision</span><span class="pill pill-neutral">2026</span>
-</div>
-<span class="citation-title">Simultaneous mean and sparse covariance monitoring via maximum likelihood estimation with positive-definite thresholding</span><span class="citation-authors">Weix, D., <strong>Taylor, N. C.</strong>, Kim, R., Cath, T. Y., and Hering, A. S.</span><span class="citation-venue">Quality Engineering (in revision)</span>
-</article>
-</li>
-</ul>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-</section>
-<section id="presentations" class="level2">
-<h2 class="anchored" data-anchor-id="presentations">Presentations</h2>
-<div id="listing-presentations" class="quarto-listing quarto-listing-container-custom">
-<ul class="citation-list list-unstyled">
-<li data-index="0" data-listing-date-sort="1780290000000">
-<article class="citation-card">
+<div class="citation-body">
 <div class="citation-meta">
 <span class="pill">Talk</span><span class="pill pill-neutral">2026</span>
 </div>
 <span class="citation-title">Predicting in-lake turbidity using satellite data: A comparison of spatial models</span><span class="citation-authors"><strong>Taylor, N. C.</strong>, and Hering, A. S.</span><span class="citation-venue">UCOWR/NIWR Annual Water Resources Conference, San Antonio, TX</span>
+<div class="citation-links">
+<a class="btn-ghost" href="./research.html#turbidity"><i class="bi bi-diagram-3"></i> Project</a><button type="button" class="btn-ghost copy-btn" data-copy="@inproceedings{taylor2026predictinga,
+  author = {Taylor, N. C. and Hering, A. S.},
+  title = {{Predicting in-lake turbidity using satellite data: A comparison of spatial models}},
+  year = {2026},
+  booktitle = {UCOWR/NIWR Annual Water Resources Conference, San Antonio, TX}
+}"><i class="bi bi-quote"></i> <span>Copy BibTeX</span></button>
+</div>
+</div>
 </article>
 </li>
-<li data-index="1" data-listing-date-sort="1617253200000">
+<li data-index="1" data-listing-date-sort="1767247200000" data-kind="paper" data-award="no">
 <article class="citation-card">
+<div class="citation-thumb">
+<i class="bi bi-file-earmark-text"></i>
+</div>
+<div class="citation-body">
+<div class="citation-meta">
+<span class="pill">In preparation</span><span class="pill pill-neutral">2026</span>
+</div>
+<span class="citation-title">Predicting in-lake turbidity using satellite data: Creating boat paths to compare cross-validation strategies</span><span class="citation-authors"><strong>Taylor, N. C.</strong>, Macleod, M. S., Powers, S. M., and Hering, A. S.</span><span class="citation-venue">In preparation</span>
+<div class="citation-links">
+<a class="btn-ghost" href="./research.html#turbidity"><i class="bi bi-diagram-3"></i> Project</a><button type="button" class="btn-ghost copy-btn" data-copy="@unpublished{taylor2026predictingb,
+  author = {Taylor, N. C. and Macleod, M. S. and Powers, S. M. and Hering, A. S.},
+  title = {{Predicting in-lake turbidity using satellite data: Creating boat paths to compare cross-validation strategies}},
+  year = {2026},
+  note = {In preparation}
+}"><i class="bi bi-quote"></i> <span>Copy BibTeX</span></button>
+</div>
+</div>
+</article>
+</li>
+<li data-index="2" data-listing-date-sort="1767247200000" data-kind="paper" data-award="no">
+<article class="citation-card">
+<div class="citation-thumb">
+<i class="bi bi-file-earmark-text"></i>
+</div>
+<div class="citation-body">
+<div class="citation-meta">
+<span class="pill">In revision</span><span class="pill pill-neutral">2026</span>
+</div>
+<span class="citation-title">Simultaneous mean and sparse covariance monitoring via maximum likelihood estimation with positive-definite thresholding</span><span class="citation-authors">Weix, D., <strong>Taylor, N. C.</strong>, Kim, R., Cath, T. Y., and Hering, A. S.</span><span class="citation-venue">Quality Engineering (in revision)</span>
+<div class="citation-links">
+<a class="btn-ghost" href="./research.html#monitoring"><i class="bi bi-diagram-3"></i> Project</a><button type="button" class="btn-ghost copy-btn" data-copy="@article{weix2026simultaneous,
+  author = {Weix, D. and Taylor, N. C. and Kim, R. and Cath, T. Y. and Hering, A. S.},
+  title = {{Simultaneous mean and sparse covariance monitoring via maximum likelihood estimation with positive-definite thresholding}},
+  year = {2026},
+  journal = {Quality Engineering},
+  note = {In revision}
+}"><i class="bi bi-quote"></i> <span>Copy BibTeX</span></button>
+</div>
+</div>
+</article>
+</li>
+<li data-index="3" data-listing-date-sort="1617253200000" data-kind="talk" data-award="yes">
+<article class="citation-card">
+<div class="citation-thumb">
+<i class="bi bi-easel"></i>
+</div>
+<div class="citation-body">
 <div class="citation-meta">
 <span class="pill">Talk</span><span class="pill pill-neutral">2021</span>
 </div>
@@ -456,17 +487,56 @@ window.Quarto = {
 <div class="citation-award">
 <span class="pill"><i class="bi bi-trophy"></i> Best Presentation in Applied Mathematics, Probability and Statistics</span>
 </div>
+<div class="citation-links">
+<button type="button" class="btn-ghost copy-btn" data-copy="@inproceedings{taylor2021bootstrap,
+  author = {Taylor, N. C. and Chen, P.},
+  title = {{Bootstrap-based error rate estimators for the linear discriminant function}},
+  year = {2021},
+  booktitle = {Annual Meeting of the Texas Section of the MAA (virtual)}
+}">
+<i class="bi bi-quote"></i> <span>Copy BibTeX</span>
+</button>
+</div>
+</div>
 </article>
 </li>
 </ul>
+<script>(function(){var bar=document.querySelector(".pub-filters");if(!bar)return;bar.addEventListener("click",function(e){var b=e.target.closest(".pub-filter");if(!b)return;var f=b.getAttribute("data-filter");bar.querySelectorAll(".pub-filter").forEach(function(x){var on=x===b;x.classList.toggle("active",on);x.setAttribute("aria-pressed",on);});document.querySelectorAll(".citation-list > li").forEach(function(li){var show=f==="all"||(f==="award"?li.getAttribute("data-award")==="yes":li.getAttribute("data-kind")===f);li.hidden=!show;});});})();</script>
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 
 
 
-</section>
 
 </main> <!-- /main -->
+<script>
+/* Copy-to-clipboard for any .copy-btn with a data-copy attribute
+   (install commands on Software, BibTeX on Publications). */
+document.addEventListener("click", function (e) {
+  var b = e.target.closest(".copy-btn");
+  if (!b) return;
+  var text = b.getAttribute("data-copy");
+  var label = b.querySelector("span");
+  var original = label ? label.textContent : "";
+  var done = function () {
+    if (label) label.textContent = "Copied";
+    b.classList.add("copied");
+    setTimeout(function () {
+      if (label) label.textContent = original;
+      b.classList.remove("copied");
+    }, 1600);
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(done, function () {});
+  } else {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (err) {}
+    document.body.removeChild(ta);
+  }
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

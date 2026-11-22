@@ -1,0 +1,17 @@
+<%
+  // Compact dated news list for the home page (news.yml).
+  const esc = (s) => String(s ?? "")
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const icons = { release: "box-seam", talk: "easel", award: "trophy", paper: "file-earmark-text", news: "megaphone" };
+  let html = '<ul class="news-list list-unstyled">';
+  for (const item of items) {
+    const icon = icons[item.kind] || icons.news;
+    html += '<li class="news-item"><span class="news-date">' + esc(item.label ?? item.date) + '</span>';
+    html += '<span class="news-icon"><i class="bi bi-' + icon + '"></i></span>';
+    html += '<span class="news-text">' + esc(item.text);
+    if (item.link) html += ' <a class="news-link" href="' + esc(item.link) + '" aria-label="More about this">More <i class="bi bi-arrow-right-short"></i></a>';
+    html += '</span></li>';
+  }
+  html += '</ul>';
+%>
+<%= html %>

@@ -1,0 +1,15 @@
+---
+editor: source
+title: "Software"
+subtitle: "Open-source tools from my research"
+listing:
+  id: software
+  contents: software.yml
+  template: _software.ejs
+  sort: "date desc"
+  sort-ui: false
+  filter-ui: false
+---
+
+::: {#software}
+:::

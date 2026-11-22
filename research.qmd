@@ -5,7 +5,7 @@ editor: source
 
 My research develops and applies spatial and spatiotemporal statistical methods, with a focus on how we build and fairly evaluate predictive models for environmental data. Below are the projects I am currently working on.
 
-::: research-card
+::: {.research-card #turbidity}
 ### Predicting in-lake turbidity from satellite data
 
 ```{=html}
@@ -20,7 +20,7 @@ This project uses satellite imagery to predict turbidity within a lake. One part
 **Outputs:** Presented at the UCOWR/NIWR Annual Water Resources Conference (2026); manuscript in preparation. See [Publications & Conferences](publications-conferences.qmd).
 :::
 
-::: research-card
+::: {.research-card #water-data}
 ### Mapping public water data across Texas
 
 <!-- ![](images/research/water-data.png){.research-image fig-alt="Network of Texas water data organizations"} -->
@@ -30,7 +30,7 @@ As part of the Baylor Water Security Collaborative, I am inventorying and charac
 **Collaborators:** A. S. Hering and the Baylor Water Security Collaborative
 :::
 
-::: research-card
+::: {.research-card #monitoring}
 ### Monitoring means and sparse covariances
 
 <!-- ![](images/research/monitoring.png){.research-image fig-alt="Process monitoring chart"} -->

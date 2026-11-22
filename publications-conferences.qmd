@@ -1,33 +1,23 @@
 ---
 editor: source
 title: "Publications & Conferences"
+subtitle: "Papers and talks on spatial statistics, model validation, and water resources"
 listing:
-  - id: publications
-    contents: publications-conferences.yml
-    template: _citation.ejs
-    include:
-      type: "Publication"
-    sort: "date desc"
-    sort-ui: false
-    filter-ui: false
-    date-format: "YYYY"
-  - id: presentations
-    contents: publications-conferences.yml
-    template: _citation.ejs
-    include:
-      type: "Presentation"
-    sort: "date desc"
-    sort-ui: false
-    filter-ui: false
-    date-format: "YYYY"
+  id: publications
+  contents: publications-conferences.yml
+  template: _citation.ejs
+  sort: "date desc"
+  sort-ui: false
+  filter-ui: false
+  date-format: "YYYY"
 ---
 
-## Publications
-
-::: {#publications}
+::: {.pill-row .page-links}
+[<i class="bi bi-github"></i> GitHub](https://github.com/n-c-taylor){.btn-ghost}
+[<i class="bi bi-file-earmark-pdf"></i> Full CV](files/cv.pdf){.btn-ghost}
+<!-- [<i class="bi bi-mortarboard"></i> Google Scholar](https://scholar.google.com/citations?user=XXXX){.btn-ghost} -->
+<!-- [<i class="bi bi-person-badge"></i> ORCID](https://orcid.org/0000-0000-0000-0000){.btn-ghost} -->
 :::
 
-## Presentations
-
-::: {#presentations}
+::: {#publications}
 :::

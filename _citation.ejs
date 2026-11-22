@@ -1,14 +1,17 @@
 <%
-  // Card-style listing for publications-conferences.yml.
+  // Publications and talks as filterable cards (publications-conferences.yml).
   // The HTML is built as one string and printed on a single line so Quarto
   // does not reinterpret indentation or blank lines as Markdown.
   // Note: in Quarto templates the equals-sign tag prints raw HTML and the
   // dash tag escapes it, the reverse of standard EJS.
   //
   // Optional fields per item: status (overrides the automatic status pill),
-  // award, pdf, slides, code, doi.
+  // award, thumb (image path), project (link to a project page/anchor),
+  // pdf, slides, code, doi.
   const escapeHtml = (s) => String(s ?? "")
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  // For attribute values that contain line breaks (BibTeX)
+  const escapeAttr = (s) => escapeHtml(s).replace(/\n/g, "&#10;");
   const myName = "Taylor, N. C.";
   const linkTypes = [
     ["pdf", "file-earmark-pdf", "PDF"],
@@ -24,13 +27,80 @@
     if (hit) return hit.charAt(0).toUpperCase() + hit.slice(1);
     return item.type === "Presentation" ? "Talk" : "Published";
   };
-  let html = '<ul class="citation-list list-unstyled">';
+
+  // "Taylor, N. C., Macleod, M. S., and Hering, A. S." -> [["Taylor","N. C."], ...]
+  const splitAuthors = (s) => {
+    const parts = String(s ?? "").split(/,\s*/).map((p) => p.replace(/^and\s+/, "").trim()).filter(Boolean);
+    const out = [];
+    for (let i = 0; i < parts.length; i += 2) out.push([parts[i], parts[i + 1] || ""]);
+    return out;
+  };
+  const keyBase = (item) => {
+    const a = splitAuthors(Array.isArray(item.author) ? item.author.join(", ") : item.author);
+    const y = (String(item.date ?? "").match(/\d{4}/) || ["nd"])[0];
+    const w = String(item.title ?? "").toLowerCase().split(/[^a-z0-9]+/).find((x) => x && !stop.has(x)) || "item";
+    return (a[0]?.[0] || "anon").toLowerCase().replace(/[^a-z]/g, "") + y + w;
+  };
+  const stop = new Set(["a", "an", "the", "on", "of", "for", "and", "in", "to"]);
+  const usedKeys = {};
+  const bibtexFor = (item, year) => {
+    const authors = splitAuthors(Array.isArray(item.author) ? item.author.join(", ") : item.author);
+    const first = (authors[0]?.[0] || "anon").toLowerCase().replace(/[^a-z]/g, "");
+    const word = String(item.title ?? "").toLowerCase().split(/[^a-z0-9]+/).find((w) => w && !stop.has(w)) || "item";
+    let key = first + year + word;
+    // Disambiguate clashes (e.g. a paper and a talk with similar titles): taylor2026predictinga, ...b
+    usedKeys[key] = (usedKeys[key] || 0) + 1;
+    if (usedKeys[key] > 1 || items.some((o) => o !== item && o.title !== item.title && keyBase(o) === key)) {
+      key += String.fromCharCode(96 + usedKeys[key]);
+    }
+    const venue = String(item.venue ?? "");
+    const status = statusFor(item);
+    const fields = [["author", authors.map(([l, f]) => (f ? l + ", " + f : l)).join(" and ")], ["title", "{" + item.title + "}"], ["year", year]];
+    let type;
+    if (item.type === "Presentation") {
+      type = "inproceedings";
+      fields.push(["booktitle", venue]);
+    } else if (/in preparation/i.test(venue)) {
+      type = "unpublished";
+      fields.push(["note", "In preparation"]);
+    } else {
+      type = "article";
+      const journal = venue.replace(/\s*\([^)]*\)\s*$/, "");
+      fields.push(["journal", journal]);
+      if (journal !== venue) fields.push(["note", status]);
+    }
+    if (item.doi) fields.push(["doi", String(item.doi).replace(/^https?:\/\/(dx\.)?doi\.org\//, "")]);
+    return "@" + type + "{" + key + ",\n" + fields.map(([k, v]) => "  " + k + " = {" + v + "}").join(",\n") + "\n}";
+  };
+
+  const counts = { all: items.length, paper: 0, talk: 0, award: 0 };
   for (const item of items) {
+    if (item.type === "Presentation") counts.talk++; else counts.paper++;
+    if (item.award) counts.award++;
+  }
+
+  let html = '<div class="pub-filters" role="group" aria-label="Filter publications">';
+  for (const [key, label] of [["all", "All"], ["paper", "Papers"], ["talk", "Talks"], ["award", "Awards"]]) {
+    html += '<button type="button" class="pub-filter' + (key === "all" ? " active" : "") + '" data-filter="' + key + '" aria-pressed="' + (key === "all") + '">' + label + ' <span class="pub-count">' + counts[key] + '</span></button>';
+  }
+  html += '</div>';
+
+  html += '<ul class="citation-list list-unstyled">';
+  for (const item of items) {
+    const kind = item.type === "Presentation" ? "talk" : "paper";
     const authors = Array.isArray(item.author) ? item.author.join(", ") : (item.author ?? "");
     const authorHtml = escapeHtml(authors).replace(myName, "<strong>" + myName + "</strong>");
     const yearMatch = String(item.date ?? "").match(/\d{4}/);
     const year = yearMatch ? yearMatch[0] : "n.d.";
-    html += '<li ' + metadataAttrs(item) + '><article class="citation-card">';
+    html += '<li ' + metadataAttrs(item) + ' data-kind="' + kind + '" data-award="' + (item.award ? "yes" : "no") + '">';
+    html += '<article class="citation-card">';
+    html += '<div class="citation-thumb">';
+    if (item.thumb) {
+      html += '<img src="' + escapeHtml(item.thumb) + '" alt="" loading="lazy">';
+    } else {
+      html += '<i class="bi bi-' + (kind === "talk" ? "easel" : "file-earmark-text") + '"></i>';
+    }
+    html += '</div><div class="citation-body">';
     html += '<div class="citation-meta">';
     html += '<span class="pill">' + escapeHtml(statusFor(item)) + '</span>';
     html += '<span class="pill pill-neutral">' + year + '</span>';
@@ -43,16 +113,18 @@
     if (item.award) {
       html += '<div class="citation-award"><span class="pill"><i class="bi bi-trophy"></i> ' + escapeHtml(item.award) + '</span></div>';
     }
-    const present = linkTypes.filter(([key]) => item[key]);
-    if (present.length > 0) {
-      html += '<div class="citation-links">';
-      for (const [key, icon, label] of present) {
-        html += '<a class="btn-ghost" href="' + escapeHtml(item[key]) + '"><i class="bi bi-' + icon + '"></i> ' + label + '</a>';
-      }
-      html += '</div>';
+    html += '<div class="citation-links">';
+    for (const [key, icon, label] of linkTypes.filter(([k]) => item[k])) {
+      html += '<a class="btn-ghost" href="' + escapeHtml(item[key]) + '"><i class="bi bi-' + icon + '"></i> ' + label + '</a>';
     }
-    html += '</article></li>';
+    if (item.project) {
+      html += '<a class="btn-ghost" href="' + escapeHtml(item.project) + '"><i class="bi bi-diagram-3"></i> Project</a>';
+    }
+    html += '<button type="button" class="btn-ghost copy-btn" data-copy="' + escapeAttr(bibtexFor(item, year)) + '"><i class="bi bi-quote"></i> <span>Copy BibTeX</span></button>';
+    html += '</div>';
+    html += '</div></article></li>';
   }
   html += '</ul>';
+  html += '<script>(function(){var bar=document.querySelector(".pub-filters");if(!bar)return;bar.addEventListener("click",function(e){var b=e.target.closest(".pub-filter");if(!b)return;var f=b.getAttribute("data-filter");bar.querySelectorAll(".pub-filter").forEach(function(x){var on=x===b;x.classList.toggle("active",on);x.setAttribute("aria-pressed",on);});document.querySelectorAll(".citation-list > li").forEach(function(li){var show=f==="all"||(f==="award"?li.getAttribute("data-award")==="yes":li.getAttribute("data-kind")===f);li.hidden=!show;});});})();</script>';
 %>
 <%= html %>

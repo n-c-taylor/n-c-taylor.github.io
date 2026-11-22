@@ -1,0 +1,40 @@
+<%
+  // Project cards for software.yml. Built as one string and printed raw
+  // (equals-sign tag) so Quarto does not treat indentation as Markdown.
+  const esc = (s) => String(s ?? "")
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  let html = '<div class="software-list">';
+  for (const item of items) {
+    html += '<article class="software-card" id="' + esc(item.id) + '">';
+    if (item.logo) {
+      html += '<div class="software-logo"><img src="' + esc(item.logo) + '" alt="' + esc(item.name) + ' logo" loading="lazy"></div>';
+    }
+    html += '<div class="software-body">';
+    html += '<div class="pill-row software-pills">';
+    if (item.language) html += '<span class="pill"><i class="bi bi-code-slash"></i> ' + esc(item.language) + '</span>';
+    if (item.version) html += '<span class="pill pill-neutral">' + esc(item.version) + '</span>';
+    if (item.status) html += '<span class="pill pill-neutral">' + esc(item.status) + '</span>';
+    html += '</div>';
+    html += '<h2 class="software-name">' + esc(item.name) + '</h2>';
+    if (item.tagline) html += '<p class="software-tagline">' + esc(item.tagline) + '</p>';
+    if (item.highlight) {
+      html += '<div class="software-highlight"><i class="bi bi-lightning-charge"></i><span>' + esc(item.highlight) + '</span></div>';
+    }
+    if (Array.isArray(item.features) && item.features.length) {
+      html += '<ul class="software-features">';
+      for (const f of item.features) html += '<li>' + esc(f) + '</li>';
+      html += '</ul>';
+    }
+    if (item.install) {
+      html += '<div class="install-box"><code>' + esc(item.install) + '</code>';
+      html += '<button type="button" class="copy-btn" data-copy="' + esc(item.install) + '" aria-label="Copy install command"><i class="bi bi-clipboard"></i><span>Copy</span></button></div>';
+    }
+    html += '<div class="software-links">';
+    if (item.repo) html += '<a class="btn-accent" href="' + esc(item.repo) + '"><i class="bi bi-github"></i> GitHub</a>';
+    if (item.docs) html += '<a class="btn-ghost" href="' + esc(item.docs) + '"><i class="bi bi-book"></i> ' + esc(item["docs-label"] || "Docs") + '</a>';
+    html += '</div>';
+    html += '</div></article>';
+  }
+  html += '</div>';
+%>
+<%= html %>
