@@ -1,0 +1,100 @@
+---
+editor: source
+title: "Curriculum Vitae"
+toc: false
+---
+
+::: {.cv-viewer-wrap}
+
+::: {.pill-row .cv-toolbar}
+[<i class="bi bi-download"></i> Download PDF](files/cv.pdf){.btn-accent download="Nicholas-C-Taylor-CV.pdf"}
+[<i class="bi bi-box-arrow-up-right"></i> Open in new tab](files/cv.pdf){.btn-ghost target="_blank" rel="noopener"}
+:::
+
+```{=html}
+<div id="cv-viewer" class="cv-viewer" aria-live="polite">
+  <div class="cv-status" id="cv-status"><i class="bi bi-hourglass-split"></i> Loading CV…</div>
+</div>
+<noscript><p>Your browser has JavaScript turned off. <a href="files/cv.pdf">Open the CV as a PDF</a>.</p></noscript>
+
+<!-- PDF.js renders the PDF as page images inside this page, so it looks the
+     same in every browser and never hands off to a PDF plug-in or download. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+(function () {
+  var PDF_URL = "files/cv.pdf";
+  var host = document.getElementById("cv-viewer");
+  var status = document.getElementById("cv-status");
+  var pdfDoc = null, lastWidth = 0, renderToken = 0;
+
+  function fail() {
+    status.innerHTML = 'The CV could not be displayed here. <a href="' + PDF_URL + '">Open the PDF instead</a>.';
+  }
+  if (!window.pdfjsLib) { fail(); return; }
+  pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+  function renderAll() {
+    var width = host.clientWidth;
+    if (!pdfDoc || !width || Math.abs(width - lastWidth) < 2) return;
+    lastWidth = width;
+    var token = ++renderToken;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2.5);
+    var frag = document.createDocumentFragment();
+    var jobs = [];
+    for (var n = 1; n <= pdfDoc.numPages; n++) {
+      jobs.push(pdfDoc.getPage(n).then(function (page) {
+        var base = page.getViewport({ scale: 1 });
+        var scale = width / base.width;
+        var vp = page.getViewport({ scale: scale });
+        var sheet = document.createElement("div");
+        sheet.className = "cv-page";
+        sheet.style.aspectRatio = base.width + " / " + base.height;
+        var canvas = document.createElement("canvas");
+        canvas.width = Math.floor(vp.width * dpr);
+        canvas.height = Math.floor(vp.height * dpr);
+        canvas.setAttribute("aria-label", "CV page " + page.pageNumber);
+        canvas.setAttribute("role", "img");
+        sheet.appendChild(canvas);
+        // Keep the CV's own links (email, GitHub, DOIs) clickable
+        page.getAnnotations().then(function (annots) {
+          annots.forEach(function (a) {
+            if (a.subtype !== "Link" || !a.url) return;
+            var r = vp.convertToViewportRectangle(a.rect);
+            var link = document.createElement("a");
+            link.href = a.url;
+            link.className = "cv-link";
+            link.target = "_blank";
+            link.rel = "noopener";
+            link.style.left = (Math.min(r[0], r[2]) / vp.width * 100) + "%";
+            link.style.top = (Math.min(r[1], r[3]) / vp.height * 100) + "%";
+            link.style.width = (Math.abs(r[2] - r[0]) / vp.width * 100) + "%";
+            link.style.height = (Math.abs(r[3] - r[1]) / vp.height * 100) + "%";
+            link.setAttribute("aria-label", a.url);
+            sheet.appendChild(link);
+          });
+        });
+        return page.render({
+          canvasContext: canvas.getContext("2d"),
+          viewport: vp,
+          transform: dpr !== 1 ? [dpr, 0, 0, dpr, 0, 0] : null
+        }).promise.then(function () { return sheet; });
+      }));
+    }
+    Promise.all(jobs).then(function (sheets) {
+      if (token !== renderToken) return;
+      sheets.forEach(function (s) { frag.appendChild(s); });
+      host.replaceChildren(frag);
+    }).catch(fail);
+  }
+
+  pdfjsLib.getDocument(PDF_URL).promise.then(function (doc) {
+    pdfDoc = doc;
+    renderAll();
+    var t;
+    window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(renderAll, 200); });
+  }).catch(fail);
+})();
+</script>
+```
+
+:::

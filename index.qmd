@@ -22,7 +22,7 @@ listing:
 ::::: {.hero-text}
 
 <!-- Job-market badge: remove the comment markers to show it.
-[[<i class="bi bi-briefcase"></i> On the job market, 2026–27](files/cv.pdf)]{.pill}
+[[<i class="bi bi-briefcase"></i> On the job market, 2026–27](cv.qmd)]{.pill}
 -->
 
 ```{=html}
@@ -34,7 +34,7 @@ listing:
 [I develop spatial and spatiotemporal statistical methods for water resources and the environment, with a focus on satellite remote sensing and fair evaluation of predictive models.]{.hero-summary}
 
 :::: {.hero-actions}
-[<i class="bi bi-file-earmark-pdf"></i> Download CV](files/cv.pdf){.btn-accent}
+[<i class="bi bi-file-earmark-person"></i> View CV](cv.qmd){.btn-accent}
 [<i class="bi bi-envelope"></i> Email me](mailto:nicholasclevelandtaylor@gmail.com){.btn-ghost}
 ::::
 

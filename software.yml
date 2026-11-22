@@ -1,6 +1,9 @@
 # Software projects shown on software.qmd (rendered by _software.ejs).
-# Fields: id, name, tagline, logo, language, version, status, highlight,
-# features (list), install, repo, docs, docs-label
+# Fields: id, name, tagline, logo, language, version, status, install,
+# repo, docs, docs-label, github (owner/repo).
+# If "github" is set and the repo is an R package, the version pill is read
+# live from the DESCRIPTION file on GitHub when the page loads ("version"
+# is only the fallback shown if GitHub can't be reached).
 
 - id: fastkcv
   name: "fastkcv"
@@ -8,14 +11,9 @@
   logo: images/software/fastkcv.png
   language: "R / C++"
   version: "v0.1.0"
+  github: n-c-taylor/fastkcv
   status: "Released Nov 2026"
   date: 2026-11-21
-  highlight: "Up to 1,500× faster leave-one-out cross-validation than gstat::krige.cv(), with results that match to numerical precision."
-  features:
-    - "Leave-one-out, k-fold and buffered (spatial) leave-one-out CV for simple, ordinary and universal kriging"
-    - "Random, spatial block and k-means fold builders, plus kcv_metrics() to compare fold designs"
-    - "Factorize once with kcv_prepare(), then run many fold schemes with kcv_run()"
-    - "Works with data.frame, sf and sp data; nested and anisotropic gstat variogram models"
   install: 'pak::pkg_install("n-c-taylor/fastkcv")'
   repo: https://github.com/n-c-taylor/fastkcv
   docs: https://github.com/n-c-taylor/fastkcv/blob/main/vignettes/fastkcv.Rmd

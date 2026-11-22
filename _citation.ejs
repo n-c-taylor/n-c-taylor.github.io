@@ -6,7 +6,7 @@
   // dash tag escapes it, the reverse of standard EJS.
   //
   // Optional fields per item: status (overrides the automatic status pill),
-  // award, thumb (image path), project (link to a project page/anchor),
+  // award, thumb (image path), thumb-fit ("contain" for logos), project (link to a project page/anchor),
   // pdf, slides, code, doi.
   const escapeHtml = (s) => String(s ?? "")
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -73,14 +73,13 @@
     return "@" + type + "{" + key + ",\n" + fields.map(([k, v]) => "  " + k + " = {" + v + "}").join(",\n") + "\n}";
   };
 
-  const counts = { all: items.length, paper: 0, talk: 0, award: 0 };
+  const counts = { all: items.length, paper: 0, talk: 0 };
   for (const item of items) {
     if (item.type === "Presentation") counts.talk++; else counts.paper++;
-    if (item.award) counts.award++;
   }
 
   let html = '<div class="pub-filters" role="group" aria-label="Filter publications">';
-  for (const [key, label] of [["all", "All"], ["paper", "Papers"], ["talk", "Talks"], ["award", "Awards"]]) {
+  for (const [key, label] of [["all", "All"], ["paper", "Papers"], ["talk", "Talks"]]) {
     html += '<button type="button" class="pub-filter' + (key === "all" ? " active" : "") + '" data-filter="' + key + '" aria-pressed="' + (key === "all") + '">' + label + ' <span class="pub-count">' + counts[key] + '</span></button>';
   }
   html += '</div>';
@@ -92,9 +91,10 @@
     const authorHtml = escapeHtml(authors).replace(myName, "<strong>" + myName + "</strong>");
     const yearMatch = String(item.date ?? "").match(/\d{4}/);
     const year = yearMatch ? yearMatch[0] : "n.d.";
-    html += '<li ' + metadataAttrs(item) + ' data-kind="' + kind + '" data-award="' + (item.award ? "yes" : "no") + '">';
+    html += '<li ' + metadataAttrs(item) + ' data-kind="' + kind + '">';
     html += '<article class="citation-card">';
-    html += '<div class="citation-thumb">';
+    const fit = item.thumb && item["thumb-fit"] === "contain" ? " is-logo" : "";
+    html += '<div class="citation-thumb' + fit + '">';
     if (item.thumb) {
       html += '<img src="' + escapeHtml(item.thumb) + '" alt="" loading="lazy">';
     } else {
@@ -125,6 +125,6 @@
     html += '</div></article></li>';
   }
   html += '</ul>';
-  html += '<script>(function(){var bar=document.querySelector(".pub-filters");if(!bar)return;bar.addEventListener("click",function(e){var b=e.target.closest(".pub-filter");if(!b)return;var f=b.getAttribute("data-filter");bar.querySelectorAll(".pub-filter").forEach(function(x){var on=x===b;x.classList.toggle("active",on);x.setAttribute("aria-pressed",on);});document.querySelectorAll(".citation-list > li").forEach(function(li){var show=f==="all"||(f==="award"?li.getAttribute("data-award")==="yes":li.getAttribute("data-kind")===f);li.hidden=!show;});});})();</script>';
+  html += '<script>(function(){var bar=document.querySelector(".pub-filters");if(!bar)return;bar.addEventListener("click",function(e){var b=e.target.closest(".pub-filter");if(!b)return;var f=b.getAttribute("data-filter");bar.querySelectorAll(".pub-filter").forEach(function(x){var on=x===b;x.classList.toggle("active",on);x.setAttribute("aria-pressed",on);});document.querySelectorAll(".citation-list > li").forEach(function(li){var show=f==="all"||li.getAttribute("data-kind")===f;li.hidden=!show;});});})();</script>';
 %>
 <%= html %>

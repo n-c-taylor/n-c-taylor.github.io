@@ -33,7 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./images/favicon.svg" rel="icon" type="image/svg+xml">
+<link href="./images/nct-logo.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-listing/list.min.js"></script>
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
@@ -85,9 +85,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-id','listing-name','listing-tagline','listing-logo','listing-language','listing-version','listing-status','listing-date','listing-highlight','listing-features','listing-install','listing-repo','listing-docs','listing-docs-label',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
+      valueNames: ['listing-id','listing-name','listing-tagline','listing-logo','listing-language','listing-version','listing-github','listing-status','listing-date','listing-install','listing-repo','listing-docs','listing-docs-label',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
       
-      searchColumns: ["listing-id","listing-name","listing-tagline","listing-logo","listing-language","listing-version","listing-status","listing-date","listing-highlight","listing-features","listing-install","listing-repo","listing-docs","listing-docs-label"],
+      searchColumns: ["listing-id","listing-name","listing-tagline","listing-logo","listing-language","listing-version","listing-github","listing-status","listing-date","listing-install","listing-repo","listing-docs","listing-docs-label"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -104,6 +104,12 @@ ul.task-list li input[type="checkbox"] {
     }
   })
   </script>
+<!-- Favicon fallbacks: PNGs for browsers without SVG favicon support (Safari),
+     plus home-screen icons. The SVG favicon is set by `favicon:` in _quarto.yml. -->
+<link rel="icon" type="image/png" sizes="32x32" href="./images/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./images/icons/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./images/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#0b1220">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -313,8 +319,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/favicon.svg" alt="NCT logo" class="navbar-logo light-content">
-    <img src="./images/favicon.svg" alt="NCT logo" class="navbar-logo dark-content">
+    <img src="./images/nct-logo.svg" alt="NCT logo" class="navbar-logo light-content">
+    <img src="./images/nct-logo.svg" alt="NCT logo" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Nicholas C. Taylor</span>
@@ -349,7 +355,7 @@ window.Quarto = {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./files/cv.pdf"> 
+    <a class="nav-link" href="./cv.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item compact">
@@ -402,31 +408,14 @@ window.Quarto = {
 </div>
 <div class="software-body">
 <div class="pill-row software-pills">
-<span class="pill"><i class="bi bi-code-slash"></i> R / C++</span><span class="pill pill-neutral">v0.1.0</span><span class="pill pill-neutral">Released Nov 2026</span>
+<span class="pill"><i class="bi bi-code-slash"></i> R / C++</span><span class="pill pill-neutral" data-gh-version="n-c-taylor/fastkcv">v0.1.0</span><span class="pill pill-neutral">Released Nov 2026</span>
 </div>
-<h2 class="software-name anchored">
+<div class="software-name" role="heading" aria-level="2">
 fastkcv
-</h2>
+</div>
 <p class="software-tagline">
 Fast, exact cross-validation for global kriging in R. A companion to gstat: same inputs and outputs as krige.cv(), but a single Cholesky factorization replaces refitting for every fold.
 </p>
-<div class="software-highlight">
-<i class="bi bi-lightning-charge"></i><span>Up to 1,500× faster leave-one-out cross-validation than gstat::krige.cv(), with results that match to numerical precision.</span>
-</div>
-<ul class="software-features">
-<li>
-Leave-one-out, k-fold and buffered (spatial) leave-one-out CV for simple, ordinary and universal kriging
-</li>
-<li>
-Random, spatial block and k-means fold builders, plus kcv_metrics() to compare fold designs
-</li>
-<li>
-Factorize once with kcv_prepare(), then run many fold schemes with kcv_run()
-</li>
-<li>
-Works with data.frame, sf and sp data; nested and anisotropic gstat variogram models
-</li>
-</ul>
 <div class="install-box">
 <code>pak::pkg_install("n-c-taylor/fastkcv")</code><button type="button" class="copy-btn" data-copy="pak::pkg_install(&quot;n-c-taylor/fastkcv&quot;)" aria-label="Copy install command"><i class="bi bi-clipboard"></i><span>Copy</span></button>
 </div>
@@ -469,6 +458,20 @@ document.addEventListener("click", function (e) {
     try { document.execCommand("copy"); done(); } catch (err) {}
     document.body.removeChild(ta);
   }
+});
+</script>
+<script>
+/* Software page: show the current package version from the DESCRIPTION file
+   on GitHub (falls back to the version in software.yml if the fetch fails). */
+document.querySelectorAll("[data-gh-version]").forEach(function (el) {
+  var repo = el.getAttribute("data-gh-version");
+  fetch("https://raw.githubusercontent.com/" + repo + "/HEAD/DESCRIPTION", { cache: "no-cache" })
+    .then(function (r) { return r.ok ? r.text() : Promise.reject(r.status); })
+    .then(function (txt) {
+      var m = txt.match(/^Version:\s*(\S+)/m);
+      if (m) el.textContent = "v" + m[1];
+    })
+    .catch(function () {});
 });
 </script>
 <script id="quarto-html-after-body" type="application/javascript">

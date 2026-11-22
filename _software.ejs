@@ -12,19 +12,14 @@
     html += '<div class="software-body">';
     html += '<div class="pill-row software-pills">';
     if (item.language) html += '<span class="pill"><i class="bi bi-code-slash"></i> ' + esc(item.language) + '</span>';
-    if (item.version) html += '<span class="pill pill-neutral">' + esc(item.version) + '</span>';
+    if (item.version || item.github) {
+      html += '<span class="pill pill-neutral"' + (item.github ? ' data-gh-version="' + esc(item.github) + '"' : '') + '>' + esc(item.version || "") + '</span>';
+    }
     if (item.status) html += '<span class="pill pill-neutral">' + esc(item.status) + '</span>';
     html += '</div>';
-    html += '<h2 class="software-name">' + esc(item.name) + '</h2>';
+    // A div (not h2) so Quarto doesn't attach a self-link anchor to the title
+    html += '<div class="software-name" role="heading" aria-level="2">' + esc(item.name) + '</div>';
     if (item.tagline) html += '<p class="software-tagline">' + esc(item.tagline) + '</p>';
-    if (item.highlight) {
-      html += '<div class="software-highlight"><i class="bi bi-lightning-charge"></i><span>' + esc(item.highlight) + '</span></div>';
-    }
-    if (Array.isArray(item.features) && item.features.length) {
-      html += '<ul class="software-features">';
-      for (const f of item.features) html += '<li>' + esc(f) + '</li>';
-      html += '</ul>';
-    }
     if (item.install) {
       html += '<div class="install-box"><code>' + esc(item.install) + '</code>';
       html += '<button type="button" class="copy-btn" data-copy="' + esc(item.install) + '" aria-label="Copy install command"><i class="bi bi-clipboard"></i><span>Copy</span></button></div>';

@@ -97,7 +97,7 @@ main a:hover { text-decoration-color: var(--accent); }
 }
 
 /* CV link becomes the filled call-to-action button */
-.navbar .nav-link[href$="cv.pdf"] {
+.navbar .nav-link[href$="cv.html"] {
   background: var(--accent-fill);
   color: var(--accent-fill-text) !important;
   padding: 0.35rem 0.95rem !important;
@@ -106,9 +106,9 @@ main a:hover { text-decoration-color: var(--accent); }
   font-weight: 600;
   transition: filter 0.15s ease, transform 0.15s ease;
 }
-.navbar .nav-link[href$="cv.pdf"]:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.navbar .nav-link[href$="cv.html"]:hover { filter: brightness(1.1); transform: translateY(-1px); }
 @media (max-width: 991.98px) {
-  .navbar .nav-link[href$="cv.pdf"] { display: inline-block; margin: 0.4rem 0; }
+  .navbar .nav-link[href$="cv.html"] { display: inline-block; margin: 0.4rem 0; }
 }
 
 /* ---------- Footer ---------- */
@@ -542,6 +542,8 @@ main a:hover { text-decoration-color: var(--accent); }
   font-size: 2.6rem;
 }
 .citation-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.citation-thumb.is-logo { background: #ffffff; border-color: var(--border); padding: 0.9rem; }
+.citation-thumb.is-logo img { object-fit: contain; }
 @media (max-width: 575.98px) {
   .citation-card { grid-template-columns: 1fr; gap: 1rem; }
   .citation-thumb { aspect-ratio: 16 / 7; font-size: 2rem; }
@@ -682,7 +684,11 @@ hr { border-color: var(--border); opacity: 1; }
 .software-logo img { width: 100%; max-width: 180px; height: auto; filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.35)); }
 .software-body { position: relative; min-width: 0; }
 .software-pills { margin: 0 0 0.6rem; }
-.software-card h2.software-name {
+.software-card .software-name {
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--heading);
   margin: 0 0 0.4rem;
   font-size: 2rem;
   font-family: "Bricolage Grotesque", sans-serif;
@@ -835,3 +841,26 @@ hr { border-color: var(--border); opacity: 1; }
 
 /* Research cards are link targets from Publications */
 .research-card { scroll-margin-top: 90px; }
+
+/* ---------- CV viewer (cv.qmd) ---------- */
+.cv-viewer-wrap { margin: 0; }
+.cv-toolbar { margin: 0 0 1.25rem; }
+.cv-viewer { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2rem; }
+.cv-page {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--border), var(--shadow);
+}
+.cv-page canvas { display: block; width: 100%; height: 100%; }
+.cv-link { position: absolute; display: block; border-radius: 2px; }
+.cv-link:hover { background: rgba(var(--accent-rgb), 0.15); outline: 1px solid rgba(var(--accent-rgb), 0.5); }
+.cv-status {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--muted);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+}

@@ -14,7 +14,7 @@ listing:
 
 ::: {.pill-row .page-links}
 [<i class="bi bi-github"></i> GitHub](https://github.com/n-c-taylor){.btn-ghost}
-[<i class="bi bi-file-earmark-pdf"></i> Full CV](files/cv.pdf){.btn-ghost}
+[<i class="bi bi-file-earmark-person"></i> Full CV](cv.qmd){.btn-ghost}
 <!-- [<i class="bi bi-mortarboard"></i> Google Scholar](https://scholar.google.com/citations?user=XXXX){.btn-ghost} -->
 <!-- [<i class="bi bi-person-badge"></i> ORCID](https://orcid.org/0000-0000-0000-0000){.btn-ghost} -->
 :::

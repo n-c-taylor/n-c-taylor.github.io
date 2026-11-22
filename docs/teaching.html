@@ -33,7 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./images/favicon.svg" rel="icon" type="image/svg+xml">
+<link href="./images/nct-logo.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -73,6 +73,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<!-- Favicon fallbacks: PNGs for browsers without SVG favicon support (Safari),
+     plus home-screen icons. The SVG favicon is set by `favicon:` in _quarto.yml. -->
+<link rel="icon" type="image/png" sizes="32x32" href="./images/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./images/icons/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./images/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#0b1220">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -250,8 +256,8 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/favicon.svg" alt="NCT logo" class="navbar-logo light-content">
-    <img src="./images/favicon.svg" alt="NCT logo" class="navbar-logo dark-content">
+    <img src="./images/nct-logo.svg" alt="NCT logo" class="navbar-logo light-content">
+    <img src="./images/nct-logo.svg" alt="NCT logo" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Nicholas C. Taylor</span>
@@ -286,7 +292,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./files/cv.pdf"> 
+    <a class="nav-link" href="./cv.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item compact">
@@ -545,6 +551,20 @@ document.addEventListener("click", function (e) {
     try { document.execCommand("copy"); done(); } catch (err) {}
     document.body.removeChild(ta);
   }
+});
+</script>
+<script>
+/* Software page: show the current package version from the DESCRIPTION file
+   on GitHub (falls back to the version in software.yml if the fetch fails). */
+document.querySelectorAll("[data-gh-version]").forEach(function (el) {
+  var repo = el.getAttribute("data-gh-version");
+  fetch("https://raw.githubusercontent.com/" + repo + "/HEAD/DESCRIPTION", { cache: "no-cache" })
+    .then(function (r) { return r.ok ? r.text() : Promise.reject(r.status); })
+    .then(function (txt) {
+      var m = txt.match(/^Version:\s*(\S+)/m);
+      if (m) el.textContent = "v" + m[1];
+    })
+    .catch(function () {});
 });
 </script>
 <script id="quarto-html-after-body" type="application/javascript">

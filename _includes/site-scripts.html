@@ -26,3 +26,17 @@ document.addEventListener("click", function (e) {
   }
 });
 </script>
+<script>
+/* Software page: show the current package version from the DESCRIPTION file
+   on GitHub (falls back to the version in software.yml if the fetch fails). */
+document.querySelectorAll("[data-gh-version]").forEach(function (el) {
+  var repo = el.getAttribute("data-gh-version");
+  fetch("https://raw.githubusercontent.com/" + repo + "/HEAD/DESCRIPTION", { cache: "no-cache" })
+    .then(function (r) { return r.ok ? r.text() : Promise.reject(r.status); })
+    .then(function (txt) {
+      var m = txt.match(/^Version:\s*(\S+)/m);
+      if (m) el.textContent = "v" + m[1];
+    })
+    .catch(function () {});
+});
+</script>

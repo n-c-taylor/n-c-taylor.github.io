@@ -33,7 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./images/favicon.svg" rel="icon" type="image/svg+xml">
+<link href="./images/nct-logo.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-listing/list.min.js"></script>
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
@@ -85,9 +85,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-type','listing-venue','listing-project','listing-award',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
+      valueNames: ['listing-title','listing-author','listing-date','listing-type','listing-venue','listing-thumb','listing-thumb-fit','listing-award',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-date","listing-type","listing-venue","listing-project","listing-award"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-type","listing-venue","listing-thumb","listing-thumb-fit","listing-award"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -104,6 +104,12 @@ ul.task-list li input[type="checkbox"] {
     }
   })
   </script>
+<!-- Favicon fallbacks: PNGs for browsers without SVG favicon support (Safari),
+     plus home-screen icons. The SVG favicon is set by `favicon:` in _quarto.yml. -->
+<link rel="icon" type="image/png" sizes="32x32" href="./images/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./images/icons/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./images/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#0b1220">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -138,8 +144,11 @@ window.Quarto = {
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="Publications &amp; Conferences – Nicholas C. Taylor">
 <meta property="og:description" content="Papers and talks on spatial statistics, model validation, and water resources">
-<meta property="og:image" content="https://n-c-taylor.github.io/images/profile.jpg">
+<meta property="og:image" content="https://n-c-taylor.github.io/images/pubs/ucowr.png">
 <meta property="og:site_name" content="Nicholas C. Taylor">
+<meta property="og:image:alt" content="">
+<meta property="og:image:height" content="252">
+<meta property="og:image:width" content="600">
 </head>
 
 <body class="nav-fixed fullcontent quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
@@ -310,8 +319,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/favicon.svg" alt="NCT logo" class="navbar-logo light-content">
-    <img src="./images/favicon.svg" alt="NCT logo" class="navbar-logo dark-content">
+    <img src="./images/nct-logo.svg" alt="NCT logo" class="navbar-logo light-content">
+    <img src="./images/nct-logo.svg" alt="NCT logo" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Nicholas C. Taylor</span>
@@ -346,7 +355,7 @@ window.Quarto = {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./files/cv.pdf"> 
+    <a class="nav-link" href="./cv.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item compact">
@@ -392,7 +401,7 @@ window.Quarto = {
 
 
 <div class="pill-row page-links">
-<p><a href="https://github.com/n-c-taylor" class="btn-ghost"><i class="bi bi-github"></i> GitHub</a> <a href="files/cv.pdf" class="btn-ghost"><i class="bi bi-file-earmark-pdf"></i> Full CV</a> <!-- [<i class="bi bi-mortarboard"></i> Google Scholar](https://scholar.google.com/citations?user=XXXX){.btn-ghost} --> <!-- [<i class="bi bi-person-badge"></i> ORCID](https://orcid.org/0000-0000-0000-0000){.btn-ghost} --></p>
+<p><a href="https://github.com/n-c-taylor" class="btn-ghost"><i class="bi bi-github"></i> GitHub</a> <a href="./cv.html" class="btn-ghost"><i class="bi bi-file-earmark-person"></i> Full CV</a> <!-- [<i class="bi bi-mortarboard"></i> Google Scholar](https://scholar.google.com/citations?user=XXXX){.btn-ghost} --> <!-- [<i class="bi bi-person-badge"></i> ORCID](https://orcid.org/0000-0000-0000-0000){.btn-ghost} --></p>
 </div>
 <div id="listing-publications" class="quarto-listing quarto-listing-container-custom">
 <div class="pub-filters" role="group" aria-label="Filter publications">
@@ -405,15 +414,12 @@ Papers <span class="pub-count">2</span>
 <button type="button" class="pub-filter" data-filter="talk" aria-pressed="false">
 Talks <span class="pub-count">2</span>
 </button>
-<button type="button" class="pub-filter" data-filter="award" aria-pressed="false">
-Awards <span class="pub-count">1</span>
-</button>
 </div>
 <ul class="citation-list list-unstyled">
-<li data-index="0" data-listing-date-sort="1780290000000" data-kind="talk" data-award="no">
+<li data-index="0" data-listing-date-sort="1780290000000" data-kind="talk">
 <article class="citation-card">
-<div class="citation-thumb">
-<i class="bi bi-easel"></i>
+<div class="citation-thumb is-logo">
+<img src="images/pubs/ucowr.png" alt="" loading="lazy">
 </div>
 <div class="citation-body">
 <div class="citation-meta">
@@ -421,17 +427,19 @@ Awards <span class="pub-count">1</span>
 </div>
 <span class="citation-title">Predicting in-lake turbidity using satellite data: A comparison of spatial models</span><span class="citation-authors"><strong>Taylor, N. C.</strong>, and Hering, A. S.</span><span class="citation-venue">UCOWR/NIWR Annual Water Resources Conference, San Antonio, TX</span>
 <div class="citation-links">
-<a class="btn-ghost" href="./research.html#turbidity"><i class="bi bi-diagram-3"></i> Project</a><button type="button" class="btn-ghost copy-btn" data-copy="@inproceedings{taylor2026predictinga,
+<button type="button" class="btn-ghost copy-btn" data-copy="@inproceedings{taylor2026predictinga,
   author = {Taylor, N. C. and Hering, A. S.},
   title = {{Predicting in-lake turbidity using satellite data: A comparison of spatial models}},
   year = {2026},
   booktitle = {UCOWR/NIWR Annual Water Resources Conference, San Antonio, TX}
-}"><i class="bi bi-quote"></i> <span>Copy BibTeX</span></button>
+}">
+<i class="bi bi-quote"></i> <span>Copy BibTeX</span>
+</button>
 </div>
 </div>
 </article>
 </li>
-<li data-index="1" data-listing-date-sort="1767247200000" data-kind="paper" data-award="no">
+<li data-index="1" data-listing-date-sort="1767247200000" data-kind="paper">
 <article class="citation-card">
 <div class="citation-thumb">
 <i class="bi bi-file-earmark-text"></i>
@@ -442,17 +450,19 @@ Awards <span class="pub-count">1</span>
 </div>
 <span class="citation-title">Predicting in-lake turbidity using satellite data: Creating boat paths to compare cross-validation strategies</span><span class="citation-authors"><strong>Taylor, N. C.</strong>, Macleod, M. S., Powers, S. M., and Hering, A. S.</span><span class="citation-venue">In preparation</span>
 <div class="citation-links">
-<a class="btn-ghost" href="./research.html#turbidity"><i class="bi bi-diagram-3"></i> Project</a><button type="button" class="btn-ghost copy-btn" data-copy="@unpublished{taylor2026predictingb,
+<button type="button" class="btn-ghost copy-btn" data-copy="@unpublished{taylor2026predictingb,
   author = {Taylor, N. C. and Macleod, M. S. and Powers, S. M. and Hering, A. S.},
   title = {{Predicting in-lake turbidity using satellite data: Creating boat paths to compare cross-validation strategies}},
   year = {2026},
   note = {In preparation}
-}"><i class="bi bi-quote"></i> <span>Copy BibTeX</span></button>
+}">
+<i class="bi bi-quote"></i> <span>Copy BibTeX</span>
+</button>
 </div>
 </div>
 </article>
 </li>
-<li data-index="2" data-listing-date-sort="1767247200000" data-kind="paper" data-award="no">
+<li data-index="2" data-listing-date-sort="1767247200000" data-kind="paper">
 <article class="citation-card">
 <div class="citation-thumb">
 <i class="bi bi-file-earmark-text"></i>
@@ -463,18 +473,20 @@ Awards <span class="pub-count">1</span>
 </div>
 <span class="citation-title">Simultaneous mean and sparse covariance monitoring via maximum likelihood estimation with positive-definite thresholding</span><span class="citation-authors">Weix, D., <strong>Taylor, N. C.</strong>, Kim, R., Cath, T. Y., and Hering, A. S.</span><span class="citation-venue">Quality Engineering (in revision)</span>
 <div class="citation-links">
-<a class="btn-ghost" href="./research.html#monitoring"><i class="bi bi-diagram-3"></i> Project</a><button type="button" class="btn-ghost copy-btn" data-copy="@article{weix2026simultaneous,
+<button type="button" class="btn-ghost copy-btn" data-copy="@article{weix2026simultaneous,
   author = {Weix, D. and Taylor, N. C. and Kim, R. and Cath, T. Y. and Hering, A. S.},
   title = {{Simultaneous mean and sparse covariance monitoring via maximum likelihood estimation with positive-definite thresholding}},
   year = {2026},
   journal = {Quality Engineering},
   note = {In revision}
-}"><i class="bi bi-quote"></i> <span>Copy BibTeX</span></button>
+}">
+<i class="bi bi-quote"></i> <span>Copy BibTeX</span>
+</button>
 </div>
 </div>
 </article>
 </li>
-<li data-index="3" data-listing-date-sort="1617253200000" data-kind="talk" data-award="yes">
+<li data-index="3" data-listing-date-sort="1617253200000" data-kind="talk">
 <article class="citation-card">
 <div class="citation-thumb">
 <i class="bi bi-easel"></i>
@@ -501,7 +513,7 @@ Awards <span class="pub-count">1</span>
 </article>
 </li>
 </ul>
-<script>(function(){var bar=document.querySelector(".pub-filters");if(!bar)return;bar.addEventListener("click",function(e){var b=e.target.closest(".pub-filter");if(!b)return;var f=b.getAttribute("data-filter");bar.querySelectorAll(".pub-filter").forEach(function(x){var on=x===b;x.classList.toggle("active",on);x.setAttribute("aria-pressed",on);});document.querySelectorAll(".citation-list > li").forEach(function(li){var show=f==="all"||(f==="award"?li.getAttribute("data-award")==="yes":li.getAttribute("data-kind")===f);li.hidden=!show;});});})();</script>
+<script>(function(){var bar=document.querySelector(".pub-filters");if(!bar)return;bar.addEventListener("click",function(e){var b=e.target.closest(".pub-filter");if(!b)return;var f=b.getAttribute("data-filter");bar.querySelectorAll(".pub-filter").forEach(function(x){var on=x===b;x.classList.toggle("active",on);x.setAttribute("aria-pressed",on);});document.querySelectorAll(".citation-list > li").forEach(function(li){var show=f==="all"||li.getAttribute("data-kind")===f;li.hidden=!show;});});})();</script>
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 
@@ -535,6 +547,20 @@ document.addEventListener("click", function (e) {
     try { document.execCommand("copy"); done(); } catch (err) {}
     document.body.removeChild(ta);
   }
+});
+</script>
+<script>
+/* Software page: show the current package version from the DESCRIPTION file
+   on GitHub (falls back to the version in software.yml if the fetch fails). */
+document.querySelectorAll("[data-gh-version]").forEach(function (el) {
+  var repo = el.getAttribute("data-gh-version");
+  fetch("https://raw.githubusercontent.com/" + repo + "/HEAD/DESCRIPTION", { cache: "no-cache" })
+    .then(function (r) { return r.ok ? r.text() : Promise.reject(r.status); })
+    .then(function (txt) {
+      var m = txt.match(/^Version:\s*(\S+)/m);
+      if (m) el.textContent = "v" + m[1];
+    })
+    .catch(function () {});
 });
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
